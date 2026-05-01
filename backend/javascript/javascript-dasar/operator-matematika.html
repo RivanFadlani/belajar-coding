@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Operator Matematika</title>
+</head>
+
+<body>
+  <script>
+
+    let hasil = 1 + 2; // deklarasi
+    document.writeln("<p>1 + 2 = " + hasil + "</p>"); // display output ke web browser
+    let hasilPenjumlahan = hasil; // output penjumlahan (variable "hasil") saat ini disalin ke variable "hasilPenjumlahan"
+
+    hasil = hasil - 1; // 2
+    document.writeln("<p>" + hasilPenjumlahan + " - 1 = " + hasil + "</p>"); // 3 - 1 = 2
+    let hasilPengurangan = hasil;
+
+    // operator augmented assignment
+    document.writeln("<p>" + "Operator Augmented Assigment" + "</p>");
+    // ===
+
+    hasil += 1; // 3
+    document.writeln("<p>" + hasilPengurangan + " + 1 = " + hasil + "</p>");
+
+    // operator unary
+    document.writeln("<p>" + "Operator Unary" + "</p>");
+    // ===
+
+    hasil = +1 // ditulis ulang menjadi 1 (positif)
+    document.writeln("<p>" + hasil + "</p>");
+
+    hasil-- // dikurangi 1 = 0
+    document.writeln("<p>" + hasil + "</p>");
+
+    hasil++ // ditambah 1 = 1
+    document.writeln("<p>" + hasil + "</p>");
+
+    hasil = -1 // diubah menjadi 1 (negatif)
+    document.writeln("<p>" + hasil + "</p>");
+
+  </script>
+</body>
+
+</html>

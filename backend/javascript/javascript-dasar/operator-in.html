@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Operator In</title>
+</head>
+
+<body>
+  <script>
+
+    // in operator berfungsi untuk mengecek apakah suatu PROPERTY ada di dalam suatu OBJECT. tapi, tidak mengecek valuenya, output yang keluar adalah 'true' dan 'false' saja. bisa digunakan ke array juga
+
+    // === object ===
+
+    let setup = {
+      monitor: "Lenovo R24e",
+      mic: "Fifine AM8",
+      controller: "Flydigi Vader 5 Pro"
+    }
+
+    const hasil = "monitor" in setup; // "cari property 'monitor' yang ada di object 'setup'"
+    document.writeln(`<p>${hasil}</p>`); // true, karena property 'monitor' ada di object 'setup'
+
+    // kalau menggunakan if expression
+    if ("monitor" in setup) {
+      document.writeln(`<p>part setup: ${setup.monitor}</p>`); // kalau true
+    } else {
+      document.writeln(`<p>zonk</p>`); // kalau false
+    }
+
+    // === array ===
+
+    let buah = ["apel", "pisang", "jeruk"];
+
+    const hasilBuah = 1 in buah; // "cari index ke-1 yang ada di array 'buah'"
+    document.writeln(`<p>${hasilBuah}</p>`); // true
+
+    // in operator tidak akan mengecek value dari sebuah property. jadi meskipun value dari sebuah property adalah 'undefined' atau 'null'. dia tetap akan menganggap true
+
+    let personId = {
+      firstName: "Rivan",
+      lastName: undefined
+    }
+
+    const result = "lastName" in personId;
+    document.writeln(`<p>Last Name: ${result}</p>`); // true
+    document.writeln(`<p>Person ID: ${personId.lastName}</p>`); // undefined
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Konversi String dan Number</title>
+</head>
+
+<body>
+  <script>
+
+    const value1 = "1";
+    const toIntValue1 = parseInt(value1); // convert dari string ke integer
+
+    const value2 = 1;
+    const toStringValue2 = value2.toString(); // convert dari number ke string
+
+    const sum = toIntValue1 + value2;
+    const sum2 = value1 + toStringValue2; // output = 11 (string)
+
+    document.writeln(`<p> ${sum} </p>`);
+    document.writeln(`<p> ${sum2} </p>`);
+
+    // Not a Number
+    const isNumber = "ups";
+    document.writeln(`<p> ${parseInt(isNumber)} </p>`); // NaN
+
+    // another NaN study case
+    const a = "hahaha";
+    const b = 1;
+    const x = parseInt(a) + b; // parseInt(a) : variable a bukanlah sebuah number, melainkan string
+
+    document.writeln(`<p> hasil: ${x} </p>`); // hasil: NaN
+
+    // toleransi
+    document.writeln(`<p> hah ${parseInt("1.1ups")} </p>`); // 1
+    document.writeln(`<p> ${parseFloat("1.1ups")} </p>`); // 1.1
+    document.writeln(`<p> ${parseInt("ups1")} </p>`); // NaN
+    // document.writeln(`<p> ${parseInt(1ups)} </p>`); // error
+
+    document.writeln(`<p> Number? ${Number("1ups")} </p>`); // NaN, karena Number() tidak mentolerir kesalahan sedikitpun (tidak seperti parseInt}() dan parseFLoat())
+    document.writeln(`<p> ${Number("1.1ups")} </p>`); // NaN
+
+    // isNaN() function
+    const iniNomor = 1;
+    const iniBukanNomor = "1hahaha";
+
+    document.writeln(`<p> ${isNaN(iniNomor)} </p>`); // 1 adalah number, berarti isNaN = false
+    document.writeln(`<p> ${isNaN(iniBukanNomor)} </p>`); // "1" bukanlah number, berarti isNaN = true
+
+    const konversi = parseInt(iniBukanNomor); // konversi variable 'iniBukanNomor' yang tipe datanya string menjadi int menggunakan function parseInt()
+    document.writeln(`<p> ini bukan nomor? ${isNaN(konversi)} </p>`); // false, karena variable 'iniBukanNomor' sudah konversi menjadi int
+
+  </script>
+</body>
+
+</html>

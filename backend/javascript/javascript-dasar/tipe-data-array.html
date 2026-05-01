@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tipe Data Array</title>
+</head>
+
+<body>
+
+  <script>
+
+    let arrayKosong = []; // ini array kosong
+
+    let arrayBerisi = ["Ren", "Yoshizawa", "Akechi"]; // index dimulai dari 0
+    console.table(arrayBerisi);
+
+    // memasukkan data baru ke dalam array
+    let waktuShalat = [];
+    waktuShalat.push("Shubuh"); // index 0
+    waktuShalat.push("Dzuhur", "Ashar", "Maghrib"); // index 1, 2, 3
+
+    console.table(waktuShalat);
+
+    // waktuShalat = ["Isya"]; // kalau ditimpa, data array sebelumnya akan hilang diganti dengan data yang baru
+    // console.table(waktuShalat);
+
+    // melihat isi data array berdasarkan array
+    console.info(`liat isinya dong: ${waktuShalat[0]}`); // Shubuh -> waktuShalat[0]
+
+    // mengubah data array berdasarkan index
+    waktuShalat[0] = "tahajud";
+    console.table(waktuShalat); // tahajud, dzuhur, ashar, maghrib
+
+    // menghapus data array berdasarkan index
+    delete waktuShalat[0];
+
+    console.table(waktuShalat); // index yang tersisa: 1, 2, 3. index 1 "tidak" bergeser urutan menjadi index 0
+    console.info(`panjang index: ${waktuShalat.length}`); // tetapi, panjang array masing menganggap index 0 itu ada (panjang array 4)
+
+    waktuShalat[0] = "Shubuh";
+    console.table(waktuShalat); // index yang tadi dihapus, masih bisa diubah/diutak-atik
+
+    // tidak ada batasan isi data array itu apa
+    waktuShalat.push(1, 2, 3, 4, 5);
+    console.table(waktuShalat);
+
+    // array multi dimensi
+    const arr1 = ["apple", "pisang", "anggur"];
+    const arr2 = ["mangga", "melon", "semangka"];
+    // const arr3 = ["jeruk", "pepaya", "manggis"];
+
+    arr1.push(arr2); // bisa diisi array lagi
+    console.table(arr1);
+
+  </script>
+
+</body>
+
+</html>

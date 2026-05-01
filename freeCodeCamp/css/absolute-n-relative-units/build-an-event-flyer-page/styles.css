@@ -1,0 +1,30 @@
+body {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  margin: 0px auto;
+  width: 50vw;
+  min-height: calc(100vh - 100px);
+}
+
+header {
+  text-align: center;
+}
+
+hr {
+  width: 80%;
+}
+
+main {
+  text-align: center;
+}
+
+section {
+  width: 35%;
+  display: inline-block;
+  vertical-align: top;
+}
+
+ol {
+  list-style-position: inside;
+  padding-left: 0;
+}

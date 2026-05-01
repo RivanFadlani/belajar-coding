@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Optional Chaining</title>
+</head>
+
+<body>
+
+  <script>
+
+    // biasanya optional chaining ini digunakan untuk mengecek suatu property di dalam object
+    const person = {
+      name: "rivan",
+      address: {
+        country: "indonesia", // dalam kasus ini, kita ingin cek 'nested object' (object -> object -> property)
+        city: "bogor"
+      }
+    }
+
+    // OBJECT = NESTED OBJECT
+    // ARRAY = ARRAY MULTIDIMENSIONAL
+
+    document.writeln(`<p>${person.address.country}</p>`);
+
+    // ===
+    // nah, di sini optional chaining akan berguna
+    // optional chaining berfungsi untuk mengecek apakah ada property yang undefined
+
+    const paket = {
+      pemilik: "Rivan",
+      penjual: "Tenjin",
+      /* alamat: { // undefined
+        // kecamatan: "Ciampea",
+        // kota: "Bogor"
+      }*/ // dalam kasus ini, object 'alamat' undefined. sedangkan, kita ingin mengakses property 'kota'
+    }
+
+    // let kota = paket.alamat.kota;
+    // document.writeln(`<p>${kota}</p>`);
+
+    document.writeln(`<p>tai</p>`); // kalau tidak logika untuk pengecekan object undefined. maka baris ini tidak akan tertampil pada halaman. karena baris sebelumnya sudah error duluan
+
+    // kalau menggunakan if-expression
+    let kota;
+    if (paket.alamat !== undefined && paket.alamat !== null) { // kalau, property 'alamat' di object 'paket' bukan undefined dan ... null bukan undefined. lakukan
+      kota = paket.alamat.kota;
+    }
+
+    document.writeln(`<p>${kota}</p>`); // undefined. kalau ada property 'kota' outputnya: Bogor
+
+    // kalau menggunakan optional chaining
+    let kotaa = paket?.alamat?.kota;
+    alert(kotaa)
+
+  </script>
+
+</body>
+
+</html>

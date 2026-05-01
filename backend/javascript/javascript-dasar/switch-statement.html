@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Switch Statement</title>
+</head>
+
+<body>
+  <script>
+
+    const nilai = "A";
+
+    // Switch Statement = biasa digunakan untuk nilai yang seimbang (equal comparison). seperti perbandingan '==', '==='
+    switch (nilai) {
+      case "A":
+        document.writeln(`<p>Selamat anda lulus dengan nilai terbaik</p>`);
+        break; // menghetikan eksekusi, agar tidak dilanjutkan ke dalam case selanjutnya
+      case "B":
+      case "C":
+        document.writeln(`<p>Selamat anda lulus</p>`);
+        break;
+      case "D":
+        document.writeln(`<p>Kamu tidak lulus</p>`);
+        break;
+      default: // 'else' - nya switch
+        document.writeln(`<p>wadduhhhh</p>`);
+    }
+
+    // If Expression
+    if (nilai === "A") {
+      document.writeln(`<p>Selamat anda lulus dengan nilai terbaik</p>`);
+    } else if (nilai === "B" || nilai === "C") {
+      document.writeln(`<p>Selamat anda lulus</p>`);
+    } else if (nilai === "D") {
+      document.writeln(`<p>Kamu tidak lulus</p>`);
+    } else {
+      document.writeln(`<p>waddduhhh</p>`);
+    }
+
+  </script>
+</body>
+
+</html>

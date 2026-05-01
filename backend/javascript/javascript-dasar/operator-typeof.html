@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Operator TypeOf</title>
+</head>
+
+<body>
+  <script>
+
+    // operator typeof berfungsi untuk mengetahui tipe data apa yang ada dalam sebuah data
+
+    // contoh
+    let data;
+    const tipeData = typeof data;
+
+    document.writeln(`<p>${tipeData}</p>`); // dalam kasus ini outputnya adalah 'undefined'. karena variable 'data' tidak mendeklarasi apapun
+
+    // Contoh lain, String
+    let nama = "rivan";
+    const tipeDataString = typeof nama;
+
+    document.writeln(`<p>tipe data: ${tipeDataString}</p>`); // "string"
+
+    // Lainnya:
+    // undefined: "undefined"
+    // null: "object"
+    // boolean: "boolean"
+    // number: "number"
+    // bigint: "bigint"
+    // string: "string"
+    // symbol: "symbol"
+    // function: "function"
+    // lainnya: "object". example: array, object
+
+  </script>
+</body>
+
+</html>

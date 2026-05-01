@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>If Expression</title>
+</head>
+
+<body>
+  <script>
+
+    // if expression sambil implementasi hasil belajar sebelumnya
+    const nilai = 80;
+    const lulusGak = "75aha";
+
+    if (nilai > parseInt(lulusGak)) {
+      document.writeln(isNaN(lulusGak)); // true NaN, isNaN yang ini tidak mengambil variable 'lulusGak' dari if expression
+      document.writeln(`<p>Selamat</p>`);
+    } else if (nilai > 60) {
+      document.writeln(`<p>Selamat deh...</p>`); // kondisi ke-2
+    } else {
+      document.writeln(`<p>Gapapa</p>`); // jika jawabannya false
+    };
+
+  </script>
+</body>
+
+</html>

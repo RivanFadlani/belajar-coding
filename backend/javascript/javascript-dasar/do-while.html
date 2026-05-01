@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Do While</title>
+</head>
+
+<body>
+  <script>
+
+    // berbeda dengan while loop. do while itu menjalankan kode yang ada di dalam blok, baru cek kondisi
+    // jadi walaupun kondisi sudah false, do while akan tetap menjalankan kode setidaknya 1 kali
+
+    // do while
+    let attempt = 100; // value sudah falsy
+    do {
+      document.writeln(`<p>Do-While ke: ${attempt}</p>`);
+      attempt++ // dan do while akan menjalankan kode sekali saja
+    } while (attempt <= 10);
+
+    // sedangkan while loop
+    let i = 100;
+    while (i <= 10) {
+      document.writeln(`<p>While-Loop ke: ${i}</p>`);
+      i++ // berbeda dengan do while, while loop tidak akan menjalankan kode. karena kondisi di awal sudah dianggap false
+    }
+
+  </script>
+</body>
+
+</html>

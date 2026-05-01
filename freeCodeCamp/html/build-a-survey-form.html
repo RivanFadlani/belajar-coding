@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Survey Form</title>
+</head>
+
+<body>
+  <h1 id="title">PunnCaffe Survey Form</h1>
+  <p id="description">
+    Terima kasih sudah meluangkan waktumu untuk mengembangkan pelayanan kami
+  </p>
+
+  <form id="survey-form">
+    <div>
+      <label for="name" id="name-label">Nama</label>
+      <input required type="text" name="name" id="name" placeholder="Masukkan Namamu" />
+    </div>
+
+    <div>
+      <label for="email" id="email-label">Email</label>
+      <input required type="email" name="email" id="email" placeholder="Masukkan Emailmu" />
+    </div>
+
+    <div>
+      <label for="number" id="number-label">Umur (Opsional)</label>
+      <input type="number" name="umur" id="number" min="1" max="64" placeholder="umur" />
+    </div>
+
+    <p>Apa profesimu saat ini?</p>
+    <select name="profesi" id="dropdown">
+      <option value="" disabled selected>Pilih salah satu...</option>
+      <option value="pelajar">Pelajar</option>
+      <option value="mahasiswa">Mahasiswa</option>
+      <option value="pekerja">Pekerja</option>
+    </select>
+
+    <p>Apakah kamu akan merekomendasikan PunnCaffe ke temanmu?</p>
+    <div>
+      <input type="radio" name="opsi-rec" value="pasti" id="pasti" />
+      <label for="pasti">Pasti</label>
+    </div>
+    <div>
+      <input type="radio" name="opsi-rec" value="mungkin" id="mungkin" />
+      <label for="mungkin">Mungkin</label>
+    </div>
+    <div>
+      <input type="radio" name="opsi-rec" value="tidak" id="tidak" />
+      <label for="tidak">Tidak</label>
+    </div>
+
+    <p>Apa menu favoritmu di sini?</p>
+    <div>
+      <input type="checkbox" name="signature-coffe" value="signature-coffe" id="signature-coffe" />
+      <label for="signature-coffe">Signature Coffe</label>
+    </div>
+    <div>
+      <input type="checkbox" name="roti" value="roti" id="roti" />
+      <label for="roti">Roti</label>
+    </div>
+    <div>
+      <input type="checkbox" name="cappucino" value="cappucino" id="cappucino" />
+      <label for="cappucino">Cappucino</label>
+    </div>
+    <div>
+      <input type="checkbox" name="nasi-goreng" value="nasi-goreng" id="nasi-goreng" />
+      <label for="nasi-goreng">Nasi Goreng</label>
+    </div>
+    <div>
+      <input type="checkbox" name="latte" value="latte" id="latte" />
+      <label for="latte">Latte</label>
+    </div>
+
+    <p>Berikan komentarmu tentang PunnCaffe</p>
+    <div>
+      <label for="komentar">Komentar</label>
+      <textarea rows="10" cols="30" name="komentar" id="komentar" placeholder="Tulis komentarmu di sini..."></textarea>
+    </div>
+
+    <button type="submit" id="submit">Kirim</button>
+  </form>
+</body>
+
+</html>

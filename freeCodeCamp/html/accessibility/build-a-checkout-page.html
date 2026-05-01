@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Checkout Page</title>
+  </head>
+
+  <body>
+    <h1>Checkout</h1>
+
+    <section>
+      <h2>Your Cart</h2>
+      <figure>
+        <img
+          src="https://cdn.freecodecamp.org/curriculum/labs/cube.jpg"
+          alt="a shuffle cube"
+        />
+        <figcaption>
+          a cube for competitive cube solver <br />
+          $10
+        </figcaption>
+      </figure>
+    </section>
+
+    <section>
+      <h2>Payment Information</h2>
+      <form>
+        <label for="card-name"
+          >Card Name <span aria-hidden="true">*</span></label
+        >
+        <input required type="text" name="card-name" id="card-name" />
+
+        <br />
+
+        <label for="card-number"
+          >Card Number <span aria-hidden="true">*</span></label
+        >
+        <input
+          required
+          type="text"
+          name="card-number"
+          id="card-number"
+          aria-describedby="card-number-help"
+        />
+
+        <p id="card-number-help">
+          Please enter your 16-digit card number without spaces or dashes.
+        </p>
+      </form>
+    </section>
+  </body>
+</html>

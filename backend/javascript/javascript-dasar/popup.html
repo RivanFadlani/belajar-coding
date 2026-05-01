@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pop Up</title>
+</head>
+
+<body>
+  <script>
+    const login = confirm('Yakin Mau Login?') // popup confirm
+    if (login) {
+      const name = prompt('Lau siapa?'); // popup prompt
+      alert(`Ohhh.. Halo ${name}`);
+    } else {
+      alert('Lau Siape Mpruy?'); // popup alert
+    } // kalau klik tombol 'true/OK' maka akan ada popup prompt yang muncul, menggunakan variable 'login' untuk memicu popupnya, kalau klik 'false/cancel' maka akan keluar popup dari else condition
+
+    // What if, yang diinput itu adalah number
+    const banding = confirm('Mau banding?');
+    if (banding) {
+      const name = prompt('Masukkan angka');
+      const angka2 = 80;
+
+      if (name > angka2) {
+        alert('BESARRRRRR');
+      } else {
+        alert('KECIILLLLL');
+      }
+    } else {
+      alert('Yaudah');
+    }
+  </script>
+</body>
+
+</html>

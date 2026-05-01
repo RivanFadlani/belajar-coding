@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pemahaman Nullish Coealescing dan Optional Chaining</title>
+</head>
+
+<body>
+  <script>
+
+    // === Nullish Coalescing ===
+
+    // sebelum menggunakan nullish coalescing
+    const personId = {
+      name: "Rivan",
+      address: undefined
+    }
+
+    let city;
+    if (personId.address === undefined || personId.address === null) {
+      city = "DEFAULT VALUE"; // kalau undefined, ambil variable ini
+    } else {
+      city = personId.address.city; // kalau tidak undefined, tampilkan isi value dari property 'city' (personId > address > city)
+    }
+
+    document.writeln(`<p>before nullish coalescing: ${city}</p>`);
+
+    // sesudah mengggunakan nullish coalescing
+    let kota = personId.address;
+    let personValid = kota ?? "DEFAULT VALUE";
+
+    document.writeln(`<p>after nullish coalescing: ${personValid}</p>`);
+
+    // === Optional Chaining ===
+
+    // sebelum menggunakan optional chaining
+    const driverLicense = {
+      name: "Rivan",
+      unit: {
+        color: "biru"
+      }
+    }
+
+    let color;
+    if (driverLicense.unit !== undefined && driverLicense.unit !== null) {
+      color = driverLicense.unit.color; // kalau tidak undefined, tampilkan isi value dari property 'color' (driverLicense > unit > color)
+    } else {
+      color = "DEFAULT VALUE"; // kalau undefined ambil variable ini
+      // sebenarnya, tanpa else juga bisa mengembalikan nilai. nilai dikembalikan adalah 'undefined'
+    }
+
+    document.writeln(`<p>before optional chaining: ${color}</p>`);
+
+    // setelah menggunakan optional chaining
+    let warna = driverLicense?.unit?.color; // kalau object 'unit' ada, maka isi value 'color' pun akan ditampilkan
+    document.writeln(`<p>after optional chaining: ${warna}</p>`); // kalau tidak ada, maka nilai yang dikembalikan adalah 'undefined'
+
+
+  </script>
+</body>
+
+</html>

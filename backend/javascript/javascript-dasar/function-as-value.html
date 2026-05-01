@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Funtion as Value</title>
+</head>
+
+<body>
+  <script>
+
+    // function di dalam variable
+    function functionAsValue(parameter, apaya) {
+      document.writeln(`<p>test ${parameter}, ${apaya}</p>`);
+    }
+
+    functionAsValue("anjing", "gatau");
+
+    const variableFunction = functionAsValue; // function disimpan ke dalam variable
+
+    variableFunction("keren", "halo");
+
+    // function di dalam parameter
+    function functionAsParam(callback) { // akan menerima callback functionAsValue. dan ditubuh function nanti dia akan menjadi functionAsValue("ripunn", "ganteng"), karena functionAsValue memiliki 2 parameter
+      callback("ripunn", "ganteng"); // seakan-akan menjadi: functionAsValue("ripunn", "ganteng")
+      // function callback() akan tereplace dengan argument yang isinya adalah function
+    }
+
+    functionAsParam(functionAsValue); // dia memanggil function yang di atas/sebelumnya
+    // atau
+    functionAsParam(variableFunction); // sama saja dengan functionAsParam(functionAsValue)
+
+    // karena mengambil function lain, maka jumlah parameter akan mengikuti parameter yang diambil
+    // buka file ini ke browser untuk melihat hasilnya
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Continue</title>
+</head>
+
+<body>
+  <script>
+
+    for (let looping = 1; looping <= 10; looping++) {
+      if (looping % 2 === 0) { // modulus, jika dibagi 2 hasilnya sama dengan satu tipe 0
+        continue; // kalau ketemu dengan angka genap, di skip ke angka selanjutnya saja. dan lanjut ke perulangan selanjutnya. dan kode yang ada di bawah tidak akan dieksekusi
+      }
+      document.writeln(`<p>looping ke-${looping}</p>`);
+    }
+
+  </script>
+</body>
+
+</html>

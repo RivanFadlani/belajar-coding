@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UNDIFINED</title>
+</head>
+
+<body>
+  <script>
+
+    // UNDIFINED adalah suatu tipe data yang berfungsi mengembalikan nilai jikalau suatu variable belum didefinisikan
+
+    // penerapan pada variable
+    let name; // belum mendefinisikan nilai variable name
+    if (name === undefined) { // ingat, '===' berarti membandingkan nilai dan tipe data secara bersamaan
+      console.info('NAME UNDIFINED HUHUHAHA');
+    } else {
+      console.info(`NAME DIFINED: ${name}`);
+    }
+
+    // penerapan pada array jika ada index undefined
+    let arr = ['Apel', 'Mangga'];
+    // arr.push('jeruk', 'pisang');
+    console.table(arr);
+
+    if (arr[2] === undefined) {
+      console.info('INDEX 2 IS UNDIFINED');
+    } else {
+      console.info(`INDEX 2 IS DEFINED: ${arr[2]}`);
+    }
+
+    // penerapan pada object jika ada property yang undifined
+    let obj = {
+      tshirt: "Uniqlo",
+      jeans: "DENIMITUP"
+    }
+    // obj["jacket"] = "FAITH INDUSTRIES";
+    console.table(obj);
+
+    if (obj.jacket === undefined) {
+      console.info('PROPERTY JACKET IS UNDIFINED');
+    } else {
+      console.info(`PROPERTY JACKET IS DEFINED: ${obj.jacket}`);
+    }
+  </script>
+</body>
+
+</html>

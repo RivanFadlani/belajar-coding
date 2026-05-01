@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .container {
+      margin: 50px auto;
+      width: 60%;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      /* -- explicit = row yang dideklarasi */
+      grid-template-rows: 50px;
+      /* -- implicit = row yang tidak dideklarasi */
+      grid-auto-rows: 100px;
+      /* -- auto-flow = kayak flex-direction */
+      /* - kalau auto-flow ber-value 'column', maka arah grid akan terus memaksa memanjang horizontal (default value dari auto-flow adalah 'row') */
+      /* grid-auto-flow: column; */
+    }
+
+    .container .item {
+      background-color: greenyellow;
+      font-weight: 800;
+    }
+
+    .container .item:nth-child(even) {
+      background-color: darkviolet;
+      color: #fff;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="item">1</div>
+    <div class="item">2</div>
+    <div class="item">3</div>
+    <div class="item">4</div>
+    <div class="item">5</div>
+    <div class="item">6</div>
+    <div class="item">7</div>
+    <div class="item">8</div>
+    <div class="item">9</div>
+    <div class="item">10</div>
+  </div>
+</body>
+
+</html>

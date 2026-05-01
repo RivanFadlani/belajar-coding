@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>While Loop</title>
+</head>
+
+<body>
+  <script>
+
+    // berbeda dengan for-loop. while-loop tidak memiliki init statement dan post statement
+
+    let percobaan = 1; // deklarasi
+    while (percobaan <= 9) { // kondisi
+      document.writeln(`<p>Percobaan ke-${percobaan}</p>`);
+      percobaan++ // tindakan setelah kondisi
+      if (percobaan == 10) {
+        document.writeln(`<p>Yeayyy... Percobaan Sukses</p>`);
+      }
+    } // di sini aku sedang eksperimen output ketika di perulangan 1-9 itu akan berbeda dengan perulangan 10. tapi kode ini kurang tepat
+    // Secara teknis, kalimat "Yeayyy... Percobaan Sukses" dicetak di dalam putaran ke-9 (setelah nilai variabelnya naik jadi 10), bukan benar-benar di "putaran ke-10" yang independen.
+
+    let attempt = 1;
+    while (attempt <= 10) { // Kita buat sampai 10
+      if (attempt === 10) {
+        document.writeln(`<p>Yeayyy... Percobaan Sukses</p>`);
+      } else {
+        document.writeln(`<p>Percobaan ke-${attempt}</p>`);
+      }
+      attempt++;
+    }
+    // secara teknis, kode ini yang paling tepat.
+
+    // Kesimpulan untuk while loop: gunakan while loop ketika kita tidak akan menggunakan init statement dan post statement (hanya membutuhkan kondisinya saja)
+
+  </script>
+</body>
+
+</html>
