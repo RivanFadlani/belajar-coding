@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Function dalam Function</title>
+</head>
+
+<body>
+  <script>
+
+    function outter() {
+      function inner() {
+        console.info("inner");
+      }
+
+      inner(); // bisa di akses, karena inner function satu level dengan inner argument
+      inner();
+    }
+
+    outter(); // untuk akses inner function, karena inner functio berada di dalam outter function
+    inner(); // ERROR, karena inner function ada di dalam outter function. tidak satu level dengan inner argument
+
+  </script>
+</body>
+
+</html>
