@@ -1,62 +1,57 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Function Generator</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Function Generator</title>
-</head>
+  <body>
+    <script>
+      // function generator bersifat iritable
+      function* identitas() {
+        yield "Rivan";
+        yield "Fadlani";
+      }
 
-<body>
-  <script>
+      let names = identitas();
+      console.info(names[0]); // undefined, tidak bisa mengakses index seperti array
+      for (const name of names) {
+        console.info(name);
+        // console.info(name[0]); // kok bisa akses index name ya?
+      }
 
-    // function generator bersifat iritable
-    function* identitas() {
-      yield "Rivan";
-      yield "Fadlani";
-    };
-
-    let names = identitas()
-    console.info(names[0]); // undefined, tidak bisa mengakses index seperti array
-    for (const name of names) {
-      console.info(name);
-      // console.info(name[0]); // kok bisa akses index name ya?
-    };
-
-    // lazy -> lebih irit RAM
-    function* generatorHitungGanjil(value) {
-      for (let i = 1; i <= value; i++) {
-        if (i % 2 === 1) {
-          console.info(`Yield ke-${i}`);
-          yield i; // hasilnya di console akan selang-seling antara function info dan yield (selang-seling)
+      // lazy -> lebih irit RAM
+      function* generatorHitungGanjil(value) {
+        for (let i = 1; i <= value; i++) {
+          if (i % 2 === 1) {
+            console.info(`Yield ke-${i}`);
+            yield i; // hasilnya di console akan selang-seling antara function info dan yield (selang-seling)
+          }
         }
       }
-    }
 
-    // eager -> boros RAM
-    function arrayHitungGanjil(value) {
-      let arr = []
-      for (let i = 1; i <= value; i++) {
-        if (i % 2 === 1) {
-          console.info(`Yield ke-${i}`);
-          arr.push(i); // hasilnya di console, function info akan dicetak semuanya dahulu baru array akan di-push semuanya (ga selang-seling)
+      // eager -> boros RAM
+      function arrayHitungGanjil(value) {
+        let arr = [];
+        for (let i = 1; i <= value; i++) {
+          if (i % 2 === 1) {
+            console.info(`Yield ke-${i}`);
+            arr.push(i); // hasilnya di console, function info akan dicetak semuanya dahulu baru array akan di-push semuanya (ga selang-seling)
+          }
         }
+        return arr;
       }
-      return arr;
-    }
 
-    const hasils = generatorHitungGanjil(100);
-    // for (const hasil of hasils) {
-    // console.info(hasil);
-    // }
-    // kalau for of ada, maka next() tidak akan berfungsi. karena function generator hanya bisa dipakai satu kali.
-    // kalau mau for of dan next() ada bersamaan, maka kita harus membuat variable baru untuk menampung argument function
+      const hasils = generatorHitungGanjil(100);
+      // for (const hasil of hasils) {
+      // console.info(hasil);
+      // }
+      // kalau for of ada, maka next() tidak akan berfungsi. karena function generator hanya bisa dipakai satu kali.
+      // kalau mau for of dan next() ada bersamaan, maka kita harus membuat variable baru untuk menampung argument function
 
-    console.log(hasils.next().value); // Yield ke-1; 1
-    console.log(hasils.next().value); // Yield ke-3; 3
-
-
-  </script>
-</body>
-
+      console.log(hasils.next().value); // Yield ke-1; 1
+      console.log(hasils.next().value); // Yield ke-3; 3
+    </script>
+  </body>
 </html>

@@ -14,3 +14,5 @@
 
 ### Mau Remix
 - [ x ] apakah if expression bisa kena local scope juga? **jawab: bisa**
+
+04 JANUARI 2026, Install Zed
