@@ -8,9 +8,8 @@
 
 ### Yang Masih Belum Dipahami
 - [ ] Function Callback
-  - Error yang sering didapat:
-  - [ ]
 - [ ] Rest Parameter
+- [ ] Closure : tinggal latih lagi
 
 ### Mau Remix
 - [ x ] apakah if expression bisa kena local scope juga? **jawab: bisa**
