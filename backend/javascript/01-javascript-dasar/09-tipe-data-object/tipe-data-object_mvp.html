@@ -1,58 +1,55 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tipe Data Object</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tipe Data Object</title>
-</head>
+  <body>
+    <script>
+      // 1. tipe data object itu kurang lebih sama dengan array
+      // 2. yang membedakan tipe data array dengan object adalah, index pada object itu bisa menggunakan string
+      // 3. index di object biasanya disebut attributes atau properties, bukan index
 
-<body>
-  <script>
+      const objectKosong = {}; // ini object kosong
 
-    // 1. tipe data object itu kurang lebih sama dengan array
-    // 2. yang membedakan tipe data array dengan object adalah, index pada object itu bisa menggunakan string
-    // 3. index di object biasanya disebut attributes atau properties, bukan index
+      // mengubah property/attribute object
+      objectKosong["nama"] = "Rivan";
+      objectKosong["kota"] = "Bogor";
+      objectKosong["umur"] = 30;
+      objectKosong.facebook = "Rivan Fadlani"; // kalau nama properti cuma 1 kata
 
-    const objectKosong = {}; // ini object kosong
+      console.table(objectKosong);
 
-    // mengubah property/attribute object
-    objectKosong["nama"] = "Rivan";
-    objectKosong["kota"] = "Bogor";
-    objectKosong["umur"] = 30;
+      delete objectKosong["nama"];
+      console.table(objectKosong);
 
-    console.table(objectKosong);
+      objectKosong["nama"] = "Rizka"; // kalau kita coba isi nama property yang sama seperti nama property sebelumnya maka,
+      console.table(objectKosong); // tidak mereplace property 'nama'. malahan propertynya muncul paling akhir
 
-    delete objectKosong["nama"];
-    console.table(objectKosong);
+      // kalau mau langsung
+      const nama = {
+        // v cara penamaan property
+        "nama lengkap": "Rivan Fadlani", // penamaan property bisa menggunakan kutip,
+        panggilan: "Ripunn", // bisa langsung ke nama property
+        akunInstagram: "ripunnrv", // bisa juga kalau lebih dari 2 kata, menggunakan camel case
+      };
 
-    objectKosong["nama"] = "Rizka"; // kalau kita coba isi nama property yang sama seperti nama property sebelumnya maka,
-    console.table(objectKosong); // tidak mereplace property 'nama'. malahan propertynya muncul paling akhir
+      // kalau mau mengakses suatu property/attribute
+      const setupRivan = {
+        monitor: "Lenovo R24e",
+        mic: "Fifine AM8",
+        laptop: "Lenovo Ideapad Gaming 3",
+      };
 
-    // kalau mau langsung
-    const nama = {
-      // v cara penamaan property
-      "nama lengkap": "Rivan Fadlani", // penamaan property bisa menggunakan kutip,
-      panggilan: "Ripunn", // bisa langsung ke nama property
-      akunInstagram: "ripunnrv" // bisa juga kalau lebih dari 2 kata, menggunakan camel case
-    };
+      console.info(setupRivan.monitor); // ini best practice
+      console.info(`micnya apa bang? ${setupRivan.mic}`);
+      console.info(setupRivan["laptop"]); //ini juga bisa, tapi lebih ribet kalau diketik
 
-    // kalau mau mengakses suatu property/attribute
-    const setupRivan = {
-      monitor: "Lenovo R24e",
-      mic: "Fifine AM8",
-      laptop: "Lenovo Ideapad Gaming 3"
-    }
-
-    console.info(setupRivan.monitor); // ini best practice
-    console.info(`micnya apa bang? ${setupRivan.mic}`);
-    console.info(setupRivan["laptop"]); //ini juga bisa, tapi lebih ribet kalau diketik
-
-    // object multi dimensi
-    objectKosong["apaya"] = objectKosong;
-    console.table(objectKosong);
-
-  </script>
-</body>
-
+      // object multi dimensi
+      objectKosong["apaya"] = objectKosong;
+      console.table(objectKosong);
+    </script>
+  </body>
 </html>
