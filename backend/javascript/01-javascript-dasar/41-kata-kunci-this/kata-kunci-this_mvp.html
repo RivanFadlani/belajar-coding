@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kata Kunci This</title>
+  </head>
+  <body>
+    <script>
+      console.info(this); // pemilik: window
+
+      function outter() {
+        console.info(this); // window
+        function inner() {
+          console.info(this); // window
+        }
+        inner();
+      }
+
+      outter();
+
+      // === biasanya kata kunci this itu dipakai pada object method
+      const person = {
+        name: "rivan",
+        sayHello: function (value) {
+          // kalau digunakan di object method, artinya this mencari tahu siapa pemilik dari function ini (yaitu object dengan nama person)
+          console.info(`Hello ${value}, my name is ${this.name}`); // ${value} mengakses parameter anonymous function sayHello
+          // ${this.name} mengakses properti name dari object person
+        },
+      };
+
+      person.sayHello("ripunn");
+
+      // note: kata kunci this tidak bisa dipakai oleh arrow function
+    </script>
+  </body>
+</html>

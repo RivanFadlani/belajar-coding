@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Destructuring</title>
+  </head>
+  <body>
+    <script>
+      {
+        // scope pemisah saja (tidak berpengaruh untuk destructuring)
+        console.info(`=== Destructuring Array ===`);
+        // === Destructuring Array
+        // cara lama untuk memanggil index array
+        const person = ["Walter", "Jesse", "Gus", "Saul", "Hector", "Tuco"];
+        let p1 = person[0]; // kita harus deklarasi satu per satu
+        let p2 = person[1];
+        let p3 = person[2];
+        // dst...
+
+        console.info(`cara lama: ${p1}`);
+        // cara cepat
+
+        const [personOne, personTwo, personThree, ...Other] = person; // nama variable harus berurutan sesuai index
+        const [orangSatu, , orangTiga] = person; // kalau ada index yang ingin dilewat
+
+        console.info(`skip index 1: ${orangTiga}`); // output: Gus
+
+        console.info(`cara baru: ${personOne}`);
+        console.info(personTwo);
+        console.info(personThree);
+        console.info(Other);
+      }
+
+      {
+        console.info(` `);
+        console.info(`=== Destructuring Object ===`);
+
+        // === Destructuring Object
+        const orang = {
+          namaAwal: "Rivan",
+          namaAkhir: "Fadlani",
+          alamat: {
+            jalan: "Jalan Gatau",
+            kota: "Bogor",
+            negara: "Indonesia",
+          },
+          hobi: "gaming",
+          instagram: "ripunnrv_",
+        };
+
+        // cara lama untuk memanggil property object
+        const data1 = orang.namaAwal;
+        const data2 = orang.namaAkhir;
+        const data3 = orang.alamat.jalan;
+        // dst...
+
+        console.info(`cara lama: ${data1}`);
+
+        // cara cepat
+        const {
+          namaAwal,
+          namaAkhir,
+          alamat: { jalan, kota, negara }, // kalau mau memanggil sub property
+          ...lainnya
+        } = orang; // nama variable harus sama dengan nama property object
+
+        console.info(`cara baru: ${namaAwal}`);
+        console.info(namaAkhir);
+        console.info(jalan);
+        console.info(kota);
+        console.info(negara);
+        console.info(lainnya);
+      }
+
+      {
+        console.info(` `);
+        console.info(`=== Destructuring Function Parameter Object ===`);
+
+        // === Destructuring Function Paramater Object
+        // cara lama
+        function displayColor(value) {
+          console.info(`cara lama: ${color.one}`);
+          console.info(color.two);
+          console.info(color.three);
+        }
+
+        const color = {
+          one: "Red",
+          two: "Green",
+          three: "Blue",
+        };
+
+        displayColor(color);
+
+        // cara cepat
+        function displayPerson({ firstName, middleName, lastName }) {
+          console.info(`cara baru: ${firstName}`);
+          console.info(middleName);
+          console.info(lastName);
+        }
+
+        const person = {
+          firstName: "Leon",
+          middleName: "Scott",
+          lastName: "Kennedy",
+        };
+
+        displayPerson(person);
+      }
+
+      {
+        console.info(` `);
+        console.info(`=== Destructuring Function Parameter Array ===`);
+
+        // === Destructuring Function Parameter Array
+        // cara lama
+        function sum(value) {
+          return value[0] + value[1];
+        }
+
+        console.info(sum([10, 10]));
+
+        // cara baru
+        function hitung({ nilaiSatu, nilaiDua }) {
+          return nilaiSatu + nilaiDua;
+        }
+
+        console.info(sum([20, 20]));
+      }
+
+      {
+        console.info(` `);
+        console.info(
+          `=== Default Value dan Merubah Nama Variable Destructuring Object ===`,
+        );
+
+        // === Default Value dan Merubah Nama Variable Destructuring Object
+        const person = {
+          firstName: "Leon",
+          // middleName: "Scott",
+          lastName: "Kennedy",
+        };
+
+        const {
+          firstName: namaDepan, // namaDepan jadi nama variable destructuring yang baru
+          middleName: namaTengah = "S.", // deklarasi default value
+          lastName: namaBelakang,
+        } = person;
+
+        console.info(namaDepan);
+        console.info(namaTengah);
+        console.info(namaBelakang);
+
+        // Default Value Array
+        const color = ["Red", "Green", "Blue"];
+        const [satu, dua, tiga, empat = "orange"] = color;
+
+        console.info(satu);
+        console.info(empat);
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Object Method</title>
+  </head>
+  <body>
+    <script>
+      const person = {
+        name: "Rivan Fadlani",
+        sayHello: function (name) {
+          // menggunakan anonymous function
+          alert(`Hi, ${name}`);
+        },
+        // atau kalau sudah ada function di global scope, bisa seperti ini:
+        // sayHello: sayHello
+
+        // kalau tidak ingin anonymous function:
+        // sayHello() {
+        //   alert(`hi, ${name}`);
+        // }
+      };
+
+      person.sayHello("Ripunn");
+      console.table(person);
+
+      // kalau mau menambahkan function dalam object
+      const orang = {
+        nama: "Ripunn",
+      };
+
+      orang.bilangHalo = function (nama) {
+        console.info(`Haloo, ${nama}`);
+      };
+
+      orang.bilangHalo("Hisoka");
+    </script>
+  </body>
+</html>
