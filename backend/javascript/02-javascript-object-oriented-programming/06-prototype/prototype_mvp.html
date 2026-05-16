@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prototype</title>
+  </head>
+  <body>
+    <script>
+      function Person(firstName, lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.sayHello = function (name) {
+          console.info(`Hi, ${name}, my name is ${this.firstName}`);
+        };
+      }
+
+      // menambahkan property di dalam prototype
+      Person.prototype.sayBye = function () {
+        console.info("good bye");
+      };
+
+      Person.prototype.run = function () {
+        console.info(`${this.firstName} is running!`);
+      };
+
+      const eko = new Person("eko", "khannedy"); // inspect > console > _proto_
+      // ada function sayBye() di dalam proto Person
+      // ada function run() di dalam proto Person
+
+      const ripunn = new Person("rivan", "fadlani"); // === sebelum cek _proto_, js akan cek object instance dulu (line ini)
+      ripunn.sayBye = function () {
+        console.info("sampai jumpa!");
+      };
+      // function sayBye langsung ada di dalam instance object Person
+      // sayBye yang ada di instance object menutupi sayBye yang ada di prototype
+
+      // Alur (hirarki) :
+      // 1. Cek instance object
+      // 2. cek prototype = Class.__proto__
+      // 3. cek object prototype = Class.prototype.__proto__
+      // 4. jika masih tidak ada, berarti error
+
+      console.log(eko);
+      console.log(ripunn);
+
+      eko.sayBye();
+      eko.run();
+
+      ripunn.sayBye();
+    </script>
+  </body>
+</html>

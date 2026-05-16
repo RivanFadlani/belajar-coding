@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Parameter di Constructor Function</title>
+  </head>
+  <body>
+    <script>
+      function Person(firstName, lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.sayHello = function (name) {
+          console.info(`Hi, ${name}! my name is ${this.firstName}`);
+        };
+      }
+
+      // kalau menggunakan parameter di dalam Constructor Function
+      const ripunn = new Person("Rivan", "Fadlani");
+      ripunn.sayHello("squidword");
+
+      // kalau tidak menggunakan
+      const spongebob = new Person();
+      spongebob.firstName = "spongebob";
+      spongebob.lastName = "squarepants";
+      spongebob.sayHello("patrick");
+    </script>
+  </body>
+</html>
