@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Public Class Field</title>
+  </head>
+  <body>
+    <script>
+      class Customer {
+        // bersifat Public
+        // sejajar dengan constructor dan method
+        // dan sifatnya dia menempel di instance
+        firstName;
+        lastName;
+        balance = 0;
+
+        constructor(firstName, lastName) {
+          // menempel pada instance
+          this.firstName = firstName;
+          this.lastName = lastName;
+        }
+
+        sayHello() {} // menempel pada prototype
+      }
+
+      const ripunn = new Customer("rivan", "fadlani"); // instance
+      console.info(ripunn);
+    </script>
+  </body>
+</html>

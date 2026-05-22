@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Super Constructor</title>
+  </head>
+  <body>
+    <script>
+      class Employee {
+        constructor(firstName) {
+          this.firstName = firstName; // class parent pasti memiliki constructor
+        }
+
+        sayHello(name) {
+          console.info(`Hi, ${name}! my name is Employee ${this.firstName}`);
+        }
+      }
+
+      class Manager extends Employee {
+        constructor(firstName, lastName) {
+          // kalau class child ingin membuat constructor, dia harus definisikan super() walaupun di class parentnya tidak punya constructor
+          super(firstName); // super() hanya boleh ditaruh di constructor
+          this.lastName = lastName;
+        }
+
+        sayHello(name) {
+          console.info(
+            `Hi, ${name}! my name is Manager ${this.firstName} ${this.lastName}`,
+          );
+        }
+      }
+
+      const ripunn = new Employee("Ripunn");
+      ripunn.sayHello("kak");
+
+      const rivan = new Manager("Rivan", "Fadlani");
+      rivan.sayHello("dek");
+    </script>
+  </body>
+</html>

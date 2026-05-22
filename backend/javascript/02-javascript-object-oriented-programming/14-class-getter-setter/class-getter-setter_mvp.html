@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Class Getter dan Class</title>
+  </head>
+  <body>
+    <script>
+      class Person {
+        constructor(firstName, lastName) {
+          this.firstName = firstName;
+          this.lastName = lastName;
+        }
+
+        get fullname() {
+          // akan ter-trigger dengan rivan.fullname
+          return `${this.firstName} ${this.lastName}`;
+        }
+
+        set fullname(value) {
+          // akan ter-trigger pada proses manipulasi property
+          const result = value.split(" ");
+          this.firstName = result[0];
+          this.lastName = result[1];
+        }
+      }
+
+      const rivan = new Person("Rivan", "Fadlani");
+      console.info(rivan);
+      console.info(rivan.fullname);
+
+      rivan.fullname = "Ripunn Ganteng"; // ini akan trigger set
+      console.info(rivan);
+      console.info(rivan.fullname);
+    </script>
+  </body>
+</html>
