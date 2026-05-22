@@ -1,114 +1,112 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Function Return Value</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Function Return Value</title>
-</head>
+  <body>
+    <script>
+      // Basic Funtion Return Value
+      function myNames(firstName, lastName) {
+        // 1,Mengolah data dan menyimpannya di variable lokal 'name'
+        let name = `Hi, ${firstName} ${lastName}!`;
 
-<body>
-  <script>
-
-    // Basic Funtion Return Value
-    function myNames(firstName, lastName) {
-      // 1,Mengolah data dan menyimpannya di variable lokal 'name'
-      let name = `Hi, ${firstName} ${lastName}!`;
-
-      // 2, Mengirim value dari 'name' keluar dari fungsi
-      return name;
-    }
-
-    // 3.Memanggil function dan MENANGKAP hasilnya ke dalam variable 'say'
-    const say = myNames("Rivan", "Fadlani");
-
-    // 4. Menggunakan hasil yang sudah ditangkap variable 'say'
-    document.writeln(`<p>${say}</p>`);
-
-    // Return bisa digunakan berkali-kali dalam satu function
-    function lulusGak(nilai) {
-      if (nilai > 90) {
-        return `Excellent, A`;
-      } else if (nilai > 80) {
-        return `Great, B`;
-      } else if (nilai > 70) {
-        return `Good Job, C`;
-      } else if (nilai > 60) {
-        return "D";
-      } else if (nilai > 50) {
-        return "E";
-      } else {
-        return "F";
+        // 2, Mengirim value dari 'name' keluar dari fungsi
+        return name;
       }
-    }
 
-    const cetakNilai = lulusGak(90);
-    document.writeln(`<p>Nilai Kamu: ${cetakNilai}</p>`);
+      // 3.Memanggil function dan MENANGKAP hasilnya ke dalam variable 'say'
+      const say = myNames("Rivan", "Fadlani");
 
-    // = = = = =
+      // 4. Menggunakan hasil yang sudah ditangkap variable 'say'
+      document.writeln(`<p>${say}</p>`);
 
-    // Mengapa harus ada return value?
-
-    // TANPA RETURN
-    // Di JavaScript, jika fungsi tidak punya return, maka secara otomatis dia akan mengembalikan nilai undefined.
-    function sumTanpaReturn(a, b) {
-      let hasil = a + b;
-      // Hanya melakukan aksi, tidak mengembalikan nilai
-    }
-
-    let simpan = sumTanpaReturn(10, 10);
-    console.info(`sum tanpa return: ${simpan}`); // Hasilnya: undefined (kosong)
-
-    // MENGGUNAKAN RETURN
-    function sumDenganReturn(a, b) {
-      return a + b; // Memberikan hasil keluar dari fungsi
-    }
-
-    let simpanReturn = sumDenganReturn(10, 10);
-    console.info(`sum dengan return: ${simpanReturn}`); // Hasilnya: 20 (berhasil disimpan!)
-
-    // = = = = =
-
-    // Menghentikan eksekusi dengan return (array)
-    function cariDeretNilai(deretNilai, cari) {
-      for (const kumpulanNilai of deretNilai) { // perulangan for of, bisa langsung melihat value dari index
-        console.info(kumpulanNilai); // lihat hasil perulangan di console, dan hasilnya akan berulang di console
-        if (kumpulanNilai === cari) { // jika pada proses perulangan ada yang sama dengan variable 'cari', maka value akan disimpan di variable hasil dan nilai dikembalikan oleh return
-          let hasil = `Mencari: ${cari}, Ada? ada euyy: ${kumpulanNilai}`;
-          return hasil; // kalau argument sama dengan value dari index, maka return akan stop semua perulangan
-          // semua blok eksekusi ini akan dieksekusi ketika kondisi true saja
+      // Return bisa digunakan berkali-kali dalam satu function
+      function lulusGak(nilai) {
+        if (nilai > 90) {
+          return `Excellent, A`;
+        } else if (nilai > 80) {
+          return `Great, B`;
+        } else if (nilai > 70) {
+          return `Good Job, C`;
+        } else if (nilai > 60) {
+          return "D";
+        } else if (nilai > 50) {
+          return "E";
+        } else {
+          return "F";
         }
       }
-      return `Not Found`;
-    }
 
-    const arr = [40, 50, 70, 75, 80, 75, 90];
-    const value = 75;
-    const hasilFinal = cariDeretNilai(arr, value);
-    document.writeln(hasilFinal);
+      const cetakNilai = lulusGak(90);
+      document.writeln(`<p>Nilai Kamu: ${cetakNilai}</p>`);
 
-    // object
-    function names(fullName, cari) {
-      for (const personName in fullName) {
-        console.info(personName);
-        if (personName === cari) {
-          let compare = fullName[personName];
-          return compare;
-        }
+      // = = = = =
+
+      // Mengapa harus ada return value?
+
+      // TANPA RETURN
+      // Di JavaScript, jika fungsi tidak punya return, maka secara otomatis dia akan mengembalikan nilai undefined.
+      function sumTanpaReturn(a, b) {
+        let hasil = a + b;
+        // Hanya melakukan aksi, tidak mengembalikan nilai
       }
-      return false;
-    }
 
-    const obj = {
-      firstName: "Rivan",
-      lastName: "Fadlani"
-    }
+      let simpan = sumTanpaReturn(10, 10);
+      console.info(`sum tanpa return: ${simpan}`); // Hasilnya: undefined (kosong)
 
-    const mencari = "lastName";
-    const result = names(obj, mencari);
-    document.writeln(`<p>${result}</p>`);
+      // MENGGUNAKAN RETURN
+      function sumDenganReturn(a, b) {
+        return a + b; // Memberikan hasil keluar dari fungsi
+      }
 
-  </script>
-</body>
+      let simpanReturn = sumDenganReturn(10, 10);
+      console.info(`sum dengan return: ${simpanReturn}`); // Hasilnya: 20 (berhasil disimpan!)
 
+      // = = = = =
+
+      // Menghentikan eksekusi dengan return (array)
+      function cariDeretNilai(deretNilai, cari) {
+        for (const kumpulanNilai of deretNilai) {
+          // perulangan for of, bisa langsung melihat value dari index
+          console.info(kumpulanNilai); // lihat hasil perulangan di console, dan hasilnya akan berulang di console
+          if (kumpulanNilai === cari) {
+            // jika pada proses perulangan ada yang sama dengan variable 'cari', maka value akan disimpan di variable hasil dan nilai dikembalikan oleh return
+            let hasil = `Mencari: ${cari}, Ada? ada euyy: ${kumpulanNilai}`;
+            return hasil; // kalau argument sama dengan value dari index, maka return akan stop semua perulangan
+            // semua blok eksekusi ini akan dieksekusi ketika kondisi true saja
+          }
+        }
+        return `Not Found`;
+      }
+
+      const arr = [40, 50, 70, 75, 80, 75, 90];
+      const value = 75;
+      const hasilFinal = cariDeretNilai(arr, value);
+      document.writeln(hasilFinal);
+
+      // object
+      function names(fullName, cari) {
+        for (const personName in fullName) {
+          console.info(personName);
+          if (personName === cari) {
+            let compare = fullName[personName];
+            return compare;
+          }
+        }
+        return false;
+      }
+
+      const obj = {
+        firstName: "Rivan",
+        lastName: "Fadlani",
+      };
+
+      const mencari = "lastName";
+      const result = names(obj, mencari);
+      document.writeln(`<p>${result}</p>`);
+    </script>
+  </body>
 </html>
