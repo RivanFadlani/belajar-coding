@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Operator instanceof</title>
+  </head>
+  <body>
+    <script>
+      class Employee {}
+
+      class Manager extends Employee {}
+
+      const ripunn = new Employee();
+      const rivan = new Manager();
+
+      console.info(ripunn instanceof Employee); // true
+      console.info(ripunn instanceof Manager); // false
+
+      console.info(rivan instanceof Employee); // false, kalau extends ke Employee: true
+      console.info(rivan instanceof Manager); // true
+    </script>
+  </body>
+</html>
