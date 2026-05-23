@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Class Error</title>
+  </head>
+  <body>
+    <script>
+      // class error
+      class ValidationError extends Error {
+        constructor(message, field) {
+          super(message); // memanggil properti bawaan (message) bawaan dari constructor class error
+          this.field = field; // menyimpan argumen ke dua dari thow statement
+        }
+      }
+
+      class MathUtil {
+        static sum(...numbers) {
+          if (numbers.length === 0) {
+            throw new ValidationError( // setelah di throw, akan di catch
+              "Numbers harus lebih dari sama dengan 0",
+              "numbers", // argumen kedua untuk this.field
+            );
+          }
+
+          let total = 0;
+          for (const number of numbers) {
+            total += number;
+          }
+          return total;
+        }
+      }
+
+      try {
+        console.info(MathUtil.sum()); // kalau error, maka akan masuk proses throw
+        console.info("rivan");
+      } catch (err) {
+        // catch menangkap error yang di throw throw statement
+        // nama parameter catch bebas
+        if (err instanceof ValidationError) {
+          // kelebihan menggunakan class error
+          console.error(
+            `Terjadi error di field ${err.field}, dengan message ${err.message}`,
+          );
+        } else {
+          console.error(`terjadi error: ${err.message}`);
+        }
+      } finally {
+        console.info(`program selesai`);
+      }
+
+      console.info("fadlani");
+    </script>
+  </body>
+</html>

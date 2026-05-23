@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Number</title>
+  </head>
+  <body>
+    <a
+      href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number"
+      >Link Dokumentasi</a
+    >
+    <script>
+      // number
+      const input = "12345";
+      const number = Number(input);
+
+      console.info(number); // 12345
+      console.info(typeof input); // string
+      console.info(typeof number); // number
+
+      console.info(Number("salah")); // NaN
+
+      // number static properties
+      console.info(Number.MIN_VALUE);
+      console.info(Number.MAX_VALUE);
+      console.info(Number.MIN_SAFE_INTEGER);
+      console.info(Number.MAX_SAFE_INTEGER);
+      console.info(Number.NaN);
+
+      // number static method
+      const data = Number("12345");
+      console.info(Number.isInteger(data)); // true
+      console.info(Number.isNaN(data)); // false
+
+      // number instance method
+      const value = Number("12345");
+      console.info(value.toString(2)); // 2 adalah binary
+      console.info(value.toLocaleString("id-ID")); // 12.345
+      console.info(value.toLocaleString("en-US")); // 12,345
+    </script>
+  </body>
+</html>
