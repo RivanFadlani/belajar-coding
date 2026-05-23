@@ -107,6 +107,13 @@
           (before, value) => before + " " + value,
         ); // urutan kebalikan dari reduce()
         console.info(nameReduceRight);
+
+        const numbers = [1, 2, 3, 4]; // 10
+        // 1 + 2 = 3
+        // 3 + 3 = 6
+        // 6 + 4 = 10
+        const numbersReduce = numbers.reduce((before, value) => before + value);
+        console.info(numbersReduce);
         // array transform end
       }
     </script>

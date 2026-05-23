@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Object</title>
+  </head>
+  <body>
+    <a
+      href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object"
+      >Link Dokumentasi</a
+    >
+
+    <script>
+      {
+        // object freeze
+        const person = {
+          firstName: "Rivan",
+          lastName: "Fadlani",
+        };
+
+        Object.freeze(person); // delete dan manipulasi attribute tidak akan berpengaruh (tidak bisa menambah jumlah property)
+
+        person.firstName = "ripunn"; // manipulasi attribute
+        person.middleName = "keren"; // tidak akan bisa menambah property
+        delete person.lastName; // delete lastName
+        console.info(person);
+
+        // object seal
+        const orang = {
+          namaDepan: "Rivan",
+          namaBelakang: "Fadlani",
+        };
+
+        Object.seal(orang); // hanya bisa manipulasi attribute, delete tidak akan berpengaruh (tidak bisa menambah jumlah property)
+
+        orang.namaDepan = "ripunn";
+        delete orang.namaBelakang;
+        console.info(orang);
+      }
+
+      {
+        // object assign
+        const target = { firstName: "Midoriya" };
+        const source = { firstName: "Deku", lastName: "Izuku" };
+
+        Object.assign(target, source); // copy isi property 'source' ke object 'target'
+        // dan kalau ada property yang sama, maka target akan ditimpa oleh source
+        console.info(target);
+      }
+
+      {
+        // object property name & value
+        const person = {
+          firstName: "Eko",
+          lastName: "Kurniawan",
+        };
+
+        console.info(Object.values(person)); // ambil value dari sebuah property
+        console.info(Object.getOwnPropertyNames(person)); // ambil property name dari sebuah object
+      }
+    </script>
+  </body>
+</html>
