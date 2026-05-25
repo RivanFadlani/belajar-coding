@@ -1,58 +1,54 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Function Parameter</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Function Parameter</title>
-</head>
+  <body>
+    <script>
+      // function dengan parameter (firstName dan lastName)
+      function sayHi(firstName, lastName) {
+        document.writeln(`<p>Hi, ${firstName} ${lastName}</p>`);
+      }
 
-<body>
-  <script>
+      // memanggil function dengan parameter
+      sayHi("Rivan", "Fadlani"); // Rivan dan Fadlani disebut dengan argument
 
-    // function dengan parameter (firstName dan lastName)
-    function sayHi(firstName, lastName) {
-      document.writeln(`<p>Hi, ${firstName} ${lastName}</p>`);
-    }
+      // experiment, dan hasilnya bisa
+      function hitung(angka1, angka2) {
+        document.writeln(`<p>${angka1 + angka2}</p>`);
+      }
 
-    // memanggil function dengan parameter
-    sayHi("Rivan", "Fadlani"); // Rivan dan Fadlani disebut dengan argument
+      document.writeln(hitung(1, 2));
 
-    // experiment, dan hasilnya bisa
-    function hitung(angka1, angka2) {
-      document.writeln(`<p>${angka1 + angka2}</p>`);
-    }
+      // optional parameter
+      function peripheral(mouse, keyboard, controller) {
+        console.info("= = =");
+        console.info(mouse);
+        console.info(keyboard);
+        console.info(controller);
+      }
 
-    hitung(1, 2);
+      peripheral(); // undefined
+      peripheral("VXE R1 PRO"); // VXE R1 PRO, undefined, undefined
+      peripheral("VXE R1 PRO", "Swagkeys65"); // VXE R1 PRO, Swagkeys, undefined
+      peripheral("VXE R1 PRO", "Swagkeys65", "Vader 5 Pro", "Green Apple"); // VXE R1 PRO, Swagkeys, Vader 5 Pro
+      // sebenarnya, fitur ini boomerang untuk dev sih, soalnya kalau tidak teliti javascript tidak akan memberi tahu di mana parameter yang belum diis
 
-    // optional parameter
-    function peripheral(mouse, keyboard, controller) {
-      console.info("= = =");
-      console.info(mouse);
-      console.info(keyboard);
-      console.info(controller);
-    }
+      // default parameter
+      function signUp(name, pass = "ga tau") {
+        console.info("= + = + =");
+        console.info(name);
+        console.info(pass);
+      }
 
-    peripheral(); // undefined
-    peripheral("VXE R1 PRO"); // VXE R1 PRO, undefined, undefined
-    peripheral("VXE R1 PRO", "Swagkeys65"); // VXE R1 PRO, Swagkeys, undefined
-    peripheral("VXE R1 PRO", "Swagkeys65", "Vader 5 Pro", "Green Apple"); // VXE R1 PRO, Swagkeys, Vader 5 Pro
-    // sebenarnya, fitur ini boomerang untuk dev sih, soalnya kalau tidak teliti javascript tidak akan memberi tahu di mana parameter yang belum diis
-
-    // default parameter
-    function signUp(name, pass = "ga tau") {
-      console.info("= + = + =");
-      console.info(name);
-      console.info(pass);
-    }
-
-    signUp(); // undefined, ga tau
-    signUp("ripunn"); // ripunn, ga tau
-    signUp("ripunn", "Admin123"); // dua-duanya muncul
-    signUp("ripunn", undefined); // ripunn, ga tau
-    signUp("ripunn", null); // ripunn, null (null itu sudah punya nilai sendiri yang artinya nilai kosong, berbeda dengan undefined yang artinya belum didefinisikan)
-
-  </script>
-</body>
-
+      signUp(); // undefined, ga tau
+      signUp("ripunn"); // ripunn, ga tau
+      signUp("ripunn", "Admin123"); // dua-duanya muncul
+      signUp("ripunn", undefined); // ripunn, ga tau
+      signUp("ripunn", null); // ripunn, null (null itu sudah punya nilai sendiri yang artinya nilai kosong, berbeda dengan undefined yang artinya belum didefinisikan)
+    </script>
+  </body>
 </html>
