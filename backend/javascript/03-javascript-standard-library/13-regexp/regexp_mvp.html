@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RegExp</title>
+  </head>
+  <body>
+    <a
+      href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp"
+      >Link Dokumentasi</a
+    >
+    <script>
+      {
+        // create RegExp
+        const regex1 = /ripunn/; // regexp literal
+        const regex2 = new RegExp("ripunn"); // constructor dengan string
+        const regex3 = new RegExp(/ripunn/); // constructor dengan literal
+      }
+
+      {
+        // exec regexp
+        const name = "Rivan Fadlani";
+        const regex = /Rivan/;
+
+        // variable regex (mencari) kata 'Rivan' di -> variable name yang berisi = "Rivan Fadlani"
+        const result = regex.exec(name); // output: hasil atau null jika tidak ditemukan
+        console.info(result); // Array ["Rivan"]. huruf R ada di urutan pertama, kalau dijadikan index, dia index ke-0
+        console.info(regex.exec("tidak ada")); // null
+
+        // test regexp
+        const test = regex.test(name); // output: boolean
+        console.info(test); // true
+        console.info(regex.test("tidak ada")); // false
+      }
+
+      {
+        // regexp modifier
+        // i = incase sensitive
+        // g = global, bisa menemukan data lebih banyak. biasanya hanya satu data saja
+        // m = multiline, pencarian dilakukan di tiap baris (enter)
+
+        const name = `eko kurniawan\nEko khannedy\nEdi Kurniawan`;
+        const regex1 = /eko/g; // pastikan gunakan selalu modifier global ini kalau ingin melakukan looping
+        const regex2 = /kurniawan/gi;
+
+        let result;
+        while ((result = regex1.exec(name)) !== null) {
+          // variable regex1 mencari '/eko/g' di variable name. kalau ketemu, tolong cetak hasilnya
+          console.info(result); // hanya menemukan 1 eko, karena regex masih case sensitive
+        }
+
+        while ((result = regex2.exec(name)) !== null) {
+          console.info(result); // mendapatkan 2 kurniawan, karena regex di set incase sensitive
+        }
+
+        {
+          // advance regexp
+
+          // salah satu contoh
+          const name = "edo eko eki eka eku eke edo eko eki";
+          const regexp = /ek[aiueo]/gi; // bisa eka, eko, eku, ...
+
+          let result;
+          while ((result = regexp.exec(name)) !== null) {
+            console.info(result);
+          }
+        }
+
+        {
+          // regexp di string
+          const name = "edo eko eki eka eku eke edo eko eki";
+
+          console.info(name.match(/ek[aiueo]/gi)); // mencari kata dengan regex yang outputnya berbentuk array
+          console.info(name.search(/ek[aiueo]/gi)); // mencari kata dengan regex yang outputnya adalah index dari letak pertama kali kata ditemukan
+          console.info(name.replace(/ek[aiueo]/i, "ripunn")); // kata yang pertama kali ditemukan, akan di replace (asal modifier tidak global)
+          console.info(name.replaceAll(/ek[aiueo]/gi, "ripunn")); // replace semua kata dengan awalan huruf 'ek'
+          console.info(name.split(/e/gi)); // split bila bertemu huruf e
+        }
+      }
+    </script>
+  </body>
+</html>
