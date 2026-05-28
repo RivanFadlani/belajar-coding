@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Proxy</title>
+  </head>
+  <body>
+    <a
+      href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy"
+      >Link Dokumentasi</a
+    >
+    <script>
+      // ==========================================
+      // LANGKAH 1: INISIALISASI DATA
+      // ==========================================
+
+      // 1a. Membuat objek `target` di memori.
+      const target = {
+        middleName: "Scott",
+      };
+
+      // 1b. Membuat objek `handler` yang berisi fungsi get dan set.
+      // Nama parameter di dalam fungsi ini sengaja disamakan menjadi 'target' (bisa dibuat berbeda nama parameternya)
+      // karena JavaScript otomatis mengoper objek `target` dari luar ke dalam parameter ini.
+      const handler = {
+        get: function (target, property) {
+          // LANGKAH 4 (Saat Membaca Nilai):
+          // Sistem Proxy otomatis mengoper objek `target` ke parameter pertama, dan nama properti ke parameter `property`
+          console.info(`Access property ${property}`);
+          return target[property]; // Mengakses properti di dalam objek `target` menggunakan bracket []
+        },
+        set: function (target, property, value) {
+          // LANGKAH 3 (Saat Mengisi Nilai):
+          // Sistem Proxy otomatis mengoper objek `target`, nama properti, dan nilai baru ke parameter di sini
+          console.info(`Change property ${property} : ${value}`);
+          target[property] = value; // Mengubah nilai properti di dalam objek `target` menggunakan bracket []
+        },
+      };
+
+      // 1c. Membuat objek `proxy` untuk menjembatani objek `target` dan `handler`.
+      const proxy = new Proxy(target, handler);
+
+      // ==========================================
+      // LANGKAH 2: OPERASI MANIPULASI DATA (SETTER)
+      // ==========================================
+
+      // 2a. Mengisi properti 'firstName' lewat `proxy`.
+      // Kronologi: JS mendeteksi operasi "=" -> Loncat ke LANGKAH 3 (handler.set)
+      proxy.firstName = "Leon";
+
+      // 2b. Mengisi properti 'lastName' lewat `proxy`.
+      // Kronologi: JS mendeteksi operasi "=" -> Loncat lagi ke LANGKAH 3 (handler.set)
+      proxy.lastName = "Kennedy";
+
+      // ==========================================
+      // LANGKAH 5: OPERASI MEMBACA DATA (GETTER)
+      // ==========================================
+
+      // 5a. Membaca proxy.firstName.
+      // Kronologi: Loncat ke LANGKAH 4 (handler.get) -> Mencetak log -> Mengembalikan nilai "Leon"
+      console.info(proxy.firstName);
+
+      // 5b. Membaca proxy.middleName.
+      // Kronologi: Loncat ke LANGKAH 4 (handler.get) -> Mencetak log -> Mengembalikan nilai "Scott"
+      console.info(proxy.middleName);
+
+      // 5c. Membaca proxy.lastName.
+      // Kronologi: Loncat ke LANGKAH 4 (handler.get) -> Mencetak log -> Mengembalikan nilai "Kennedy"
+      console.info(proxy.lastName);
+
+      // ==========================================
+      // LANGKAH TERAKHIR: MENGECEK OBJEK TARGET
+      // ==========================================
+
+      // 6. Mencetak objek `target` asli yang ada di luar.
+      // Karena semua proses di LANGKAH 3 langsung memanipulasi parameter `target` (yang merujuk ke objek yang sama),
+      // maka objek `target` di bawah ini sekarang nilainya sudah ikut berubah.
+      console.info(target);
+      // Output: { middleName: "Scott", firstName: "Leon", lastName: "Kennedy" }
+    </script>
+  </body>
+</html>

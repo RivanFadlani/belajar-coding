@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Encode</title>
+  </head>
+  <body>
+    <script>
+      // encodeURI(value) : Melakukan encode value, namun karakter yang dipesan URI tidak akan diubah (;,/?:@&=+$#)
+      // encodeURIComponent(value) : Melakukan encode value semua karakter
+      // decode(URI) : Melakukan decode value hasil dari encodeURI()
+      // decodeURIComponent(encoded) :  Melakukan decode value hasil dari encodeURIComponent
+
+      {
+        // Encode URI dan Decode URI
+        const url = "http://contoh.com/?name=Eko Kurniawan Khannedy";
+        const url2 = "http://contoh.com/?name=Eko&Kurniawan=Khannedy";
+        console.info(`=== Original ===`);
+        console.info(url);
+
+        const encode = encodeURI(url);
+        console.info(`=== Encode URL ===`);
+        console.info(encode); // spasi -> %20
+
+        const encode2 = encodeURI(url2);
+        console.info(`=== Encode URL 2 ===`);
+        console.info(encode2); // '&' sama '=' tidak di encode. bisa dilakukan dengan encodeURIComponent()
+
+        const decode = decodeURI(encode);
+        console.info(`=== Decode URI ===`);
+        console.info(decode);
+      }
+
+      {
+        // Encode URI Component dan Decode URI Component
+        const value = "Eko&Kurniawan=Khannedy";
+        const url = "http://contoh.com/?name=";
+        console.info(`=== Original ===`);
+        console.info(url + value);
+
+        const encode = encodeURIComponent(value);
+        console.info(`=== Encode 'Value' ===`);
+        console.info(url + encode); // & -> %26, = -> %3D
+
+        const decode = decodeURIComponent(encode);
+        console.info(`=== Decode URI Component ===`);
+        console.info(url + decode);
+      }
+    </script>
+  </body>
+</html>
