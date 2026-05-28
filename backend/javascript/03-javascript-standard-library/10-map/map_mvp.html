@@ -29,6 +29,15 @@
         console.info(`${element[0]} : ${element[1]}`);
       }
 
+      // atau, bisa juga coba ini
+
+      // print dengan Destructuring
+      for (const [key, value] of map) {
+        console.info(`${key} : ${value}`);
+      }
+
+      // atau
+
       // print yang lebih baik
       map.forEach((value, key) => console.info(`${key} : ${value}`)); // parameter forEach harus dibalik. 'value' dulu baru 'key'
     </script>
