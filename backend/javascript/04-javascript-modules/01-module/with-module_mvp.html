@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>With Module</title>
+    <script type="module" src="scripts/say.js"></script>
+  </head>
+  <body>
+    <script>
+      // output nantinya akan error, dikarenakan beberapa kode yang ingin di ekspos harus di 'EXPORT' terlebih dahulu
+      sayHello("Rivan");
+      sayGoodBye("Fadlani");
+
+      console.info(name);
+    </script>
+  </body>
+</html>

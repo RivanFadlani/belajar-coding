@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Export Multiple</title>
+  </head>
+  <body>
+    <script type="module">
+      import {
+        name as nama,
+        sum as hitung,
+        Person as Orang,
+      } from "./scripts/alias.js";
+
+      console.info(nama);
+      console.info(hitung(10, 10));
+
+      const person = new Orang("Rivan");
+      person.sayHello("Ripunn");
+    </script>
+  </body>
+</html>
