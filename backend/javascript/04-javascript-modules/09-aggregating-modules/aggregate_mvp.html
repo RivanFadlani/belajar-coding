@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aggregating Modules</title>
+  </head>
+  <body>
+    <script type="module">
+      // aggregate adalah menggabungkan beberapa module ke dalam satu module
+      import { name, Person, Ripunn, sum } from "./scripts/aggregate.js";
+
+      console.info(name);
+
+      const person = new Person("ripunn");
+      person.sayHello("fadlani");
+
+      const ripunn = new Ripunn("makoto");
+      ripunn.sayHello("yuki");
+
+      console.info(sum(10, 10));
+    </script>
+  </body>
+</html>
