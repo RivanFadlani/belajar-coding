@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Node List</title>
+  </head>
+  <body>
+    <ul id="menu-satu">
+      <li id="first">First</li>
+      <li id="second">Second</li>
+      <li id="third">Third</li>
+    </ul>
+
+    <ul id="menu-dua">
+      <li id="first-name">Eko</li>
+      <li id="middle-name">Kurniawan</li>
+      <li id="last-name">Khannedy</li>
+    </ul>
+
+    <script>
+      const listItem = document.querySelectorAll("li"); // seleksi berdasarkan ada berapa tag li di document
+      console.info(listItem);
+
+      const menuSatu = document.getElementById("menu-satu").childNodes; // id menu-satu dan seleksi node yang di dalamnya ada text dan element
+      console.info(menuSatu);
+
+      const menuDua = document.getElementById("menu-dua").childNodes;
+      console.info(menuDua);
+    </script>
+  </body>
+</html>

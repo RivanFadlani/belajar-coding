@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Node List Live</title>
+  </head>
+  <body>
+    <ul id="menu-satu">
+      <li id="first">First</li>
+      <li id="second">Second</li>
+      <li id="third">Third</li>
+    </ul>
+
+    <ul id="menu-dua">
+      <li id="first-name">Eko</li>
+      <li id="middle-name">Kurniawan</li>
+      <li id="last-name">Khannedy</li>
+    </ul>
+
+    <script>
+      const menuSatu = document.getElementById("menu-satu");
+      const list = menuSatu.childNodes; // childNodes yang ada di dalam element id menu-satu ada 7
+
+      menuSatu.appendChild(document.createElement("li")).textContent =
+        "belajar"; // buat elemet li di dalam element id menu-satu, lalu input textContent-nya
+
+      menuSatu.appendChild(document.createElement("li"));
+      console.info(list); // ketika membuat element di dalam childNodes, maka list juga akan ikut berubah (inspect > console)
+      // yang tadinya list 7 menjadi 9
+    </script>
+  </body>
+</html>
