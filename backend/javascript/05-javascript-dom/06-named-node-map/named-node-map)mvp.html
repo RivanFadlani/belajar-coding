@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Attr</title>
+  </head>
+  <body>
+    <img id="photo" src="https://picsum.photos/id/36/500/300" alt="photo" />
+    <script>
+      const photo = document.getElementById("photo");
+      const attributes = photo.attributes; // .attributes adalah property dari element. yang fungsinya untuk mengembalikan semua attribute nodes yang terdaftar di spesifik node
+
+      // Properti .attributes tidak mengembalikan Array biasa, melainkan sebuah object collection khusus bernama NamedNodeMap.
+
+      for (const attribute of attributes) {
+        console.info(`${attribute.name} : ${attribute.value}`);
+      }
+
+      console.info(attributes); // NamedNodeMap
+    </script>
+  </body>
+</html>

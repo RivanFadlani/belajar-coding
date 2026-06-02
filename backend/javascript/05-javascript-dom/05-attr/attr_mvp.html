@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Attr</title>
+  </head>
+  <body>
+    <a href="https://developer.mozilla.org/en-US/docs/Web/API/Attr"
+      >Link Dokumentasi</a
+    >
+    <img id="photo" src="https://picsum.photos/id/36/500/300" alt="photo" />
+    <script>
+      const photo = document.getElementById("photo");
+
+      const src = photo.getAttributeNode("src");
+
+      // di bawah ini adalah property yang disediakan oleh attr
+      console.info(src.name); // src
+      console.info(src.value); // https://...
+
+      // kalau mau langsung mengambil value dari attribute
+      const source = photo.getAttribute("src");
+
+      console.info(`source: ${source}`);
+    </script>
+  </body>
+</html>

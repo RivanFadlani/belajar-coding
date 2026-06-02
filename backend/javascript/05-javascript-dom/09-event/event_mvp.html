@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event</title>
+  </head>
+  <body>
+    <h1 id="text">Click Yellow Box</h1>
+    <div
+      id="box"
+      style="width: 500px; height: 500px; background-color: yellow"
+    ></div>
+    <script>
+      const text = document.getElementById("text");
+      const box = document.getElementById("box");
+
+      // box.onclick = function (event) {
+      //   text.textContent = `You click at (${event.x}, ${event.y})`;
+      // };
+
+      box.addEventListener("click", function (event) {
+        text.textContent = `u click at (${event.x}, ${event.y})`;
+        console.log(event.type); // untuk mengetahui event type = click
+        console.log(event); // untuk mengetahui event object = PointerEvent
+      });
+    </script>
+  </body>
+</html>

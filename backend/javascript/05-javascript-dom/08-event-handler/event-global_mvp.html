@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Global Event Handler</title>
+  </head>
+  <body>
+    <input id="clikMe" type="button" value="Click Me" />
+    <script>
+      // sebenarnya menggunakan global event handler sudah tidak direkomendasikan lagi
+      // lebih direkomendasikan menggunakan event target saja
+      const btn = document.getElementById("clikMe");
+      btn.onclick = function () {
+        btn.setAttribute("value", "Whadefugg");
+      };
+      // tidak bisa membuat lebih dari satu event, kalau dipaksakan maka event sebelumnya akan ditimpa
+      // btn.onclick = function () {
+      //   console.info("duarrr");
+      // };
+    </script>
+  </body>
+</html>

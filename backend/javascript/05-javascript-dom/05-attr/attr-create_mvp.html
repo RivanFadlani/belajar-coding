@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Attr</title>
+  </head>
+  <body>
+    <img id="photo" alt="photo" />
+    <script>
+      const photo = document.getElementById("photo");
+
+      // create attribute
+      // cara pertama: set attribute dan value terpisah
+      // ===
+      // const src = document.createAttribute("src");
+      // src.value = "https://picsum.photos/id/36/500/300";
+      // photo.setAttributeNode(src);
+
+      // cara kedua = set attribute dan value secara bersamaan
+      // ===
+      photo.setAttribute("src", "https://picsum.photos/id/36/500/300");
+    </script>
+  </body>
+</html>
