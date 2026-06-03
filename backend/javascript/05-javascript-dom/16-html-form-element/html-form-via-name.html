@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form Via Name</title>
+  </head>
+  <body>
+    <!-- lebih lengkapnya bisa baca dokumentasi html form element di MDN -->
+    <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement"
+      >Link Dokumentasi</a
+    >
+    <form name="commentForm">
+      <label for="comment">
+        Comment : <input id="comment" type="text" name="comment" />
+      </label>
+      <br />
+      <label for="from">
+        From : <input id="from" type="text" name="from" />
+      </label>
+      <br />
+      <input type="submit" value="submit" />
+    </form>
+    <div id="commentList"></div>
+    <script>
+      // document.forms[formName][inputName]
+      document.forms["commentForm"].addEventListener(
+        "submit",
+        function (event) {
+          // 1
+          const commentList = document.getElementById("commentList");
+
+          const comment = document.forms["commentForm"]["comment"].value; // 2
+          const from = document.forms["commentForm"]["from"].value; // 3
+
+          const createComment = document.createElement("p");
+          createComment.textContent = `${comment} - ${from}`;
+          commentList.appendChild(createComment);
+
+          document.forms["commentForm"].reset(); // 4
+
+          event.preventDefault();
+        },
+      );
+    </script>
+  </body>
+</html>

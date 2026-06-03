@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTML Form Element</title>
+  </head>
+  <body>
+    <!-- lebih lengkapnya bisa baca dokumentasi html form element di MDN -->
+    <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement"
+      >Link Dokumentasi</a
+    >
+    <form name="commentForm">
+      <label for="comment">
+        Comment : <input id="comment" type="text" name="comment" />
+      </label>
+      <br />
+      <label for="from">
+        From : <input id="from" type="text" name="from" />
+      </label>
+      <br />
+      <input type="submit" value="submit" />
+    </form>
+    <div id="commentList"></div>
+    <script>
+      document
+        .querySelector("form[name=commentForm]") // Menyeleksi elemen form berdasarkan atribut name="commentForm"
+        .addEventListener("submit", function (event) {
+          // Mencegah perilaku default form (agar halaman tidak me-refresh setelah submit)
+          event.preventDefault();
+
+          // Menangkap event submit pada form, lalu menjalankan fungsi di bawah ini
+          const commentList = document.getElementById("commentList");
+
+          // Mengambil nilai (value) terbaru dari input yang memiliki id "comment" dan "from" saat form di-submit
+          const comment = document.getElementById("comment").value;
+          const from = document.getElementById("from").value;
+
+          // Membuat elemen <p> baru
+          const createComment = document.createElement("p");
+          // Mengisi teks elemen <p> dengan format "Komentar - Pengirim"
+          createComment.textContent = `${comment} - ${from}`;
+          // Memasukkan elemen <p> tersebut ke dalam div #commentList
+          commentList.appendChild(createComment);
+
+          // Mengosongkan/reset kembali semua input text yang ada di dalam form
+          document.querySelector("form[name=commentForm]").reset();
+        });
+    </script>
+  </body>
+</html>

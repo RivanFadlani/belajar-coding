@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Node Type</title>
+  </head>
+  <body>
+    Rivan Fadlani Ganteng
+    <!-- Bang! Tanggapan lu -->
+    <h1>INI JUDUL</h1>
+
+    <script>
+      // Baca dokumentasi tentang node type di MDN buat tau tipe nodenya
+      // karena output nodeType adalah integer
+      const nodes = document.body.childNodes;
+      for (const node of nodes) {
+        console.info(`${node} : ${node.nodeType}`);
+      }
+    </script>
+  </body>
+</html>
