@@ -10,6 +10,8 @@ body {
 .container {
   margin: 150px auto;
   padding: 30px 50px;
+  border-radius: 10px;
+  border: 3px solid black;
   box-sizing: border-box;
   width: 600px;
   background-color: #eaeaea;
@@ -21,7 +23,52 @@ label {
 
 .todo-form {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
+  .todo-input {
+    border: 2px solid black;
+    border-radius: 7px;
+    background-color: #fff;
+  }
+  label[for="todo"] {
+    margin-left: 30px;
+    font-weight: bold;
+  }
+  .todo-input input.todo {
+    border: 0;
+    width: 260px;
+    border-radius: 0px 5px 5px 0px;
+    box-sizing: border-box;
+    background-color: greenyellow;
+    padding: 10px 10px;
+  }
+  input[type="submit"] {
+    font-weight: bold;
+    border: 0;
+    border: 2px solid black;
+    box-sizing: border-box;
+    border-radius: 7px;
+    background-color: greenyellow;
+    padding: 10px 20px;
+  }
+}
+
+.filter-box {
+  width: 373.4px;
+  border: 2px solid black;
+  border-radius: 7px;
+  background-color: #fff;
+  label[for="filter"] {
+    font-weight: bold;
+    margin-left: 30px;
+  }
+  input[type="text"] {
+    border: 0;
+    border-radius: 0px 5px 5px 0px;
+    width: 260px;
+    box-sizing: border-box;
+    background-color: greenyellow;
+    padding: 10px 10px;
+  }
 }
 
 .todo-index {
@@ -29,4 +76,8 @@ label {
   p {
     margin-left: 20px;
   }
+}
+
+.selesai {
+  text-decoration: line-through;
 }
