@@ -41,6 +41,8 @@ function addTodoList(todo) {
   }
 }
 
+// = todoList adalah Default Parameter
+// kalau semisal displayTodoList() dikirim tanpa argumen, maka akan memakai data todoList yang asli
 function displayTodoList(filteredList = todoList) {
   const todoContainer = document.getElementById("todo-container");
   const doneContainer = document.getElementById("done-container");
@@ -72,9 +74,13 @@ document.forms["todo-form"].addEventListener("submit", function (event) {
 
 const filterInput = document.getElementById("filter");
 
+// jadi kalau function input tertrigger dengan input di kolom filter, maka displayTodoList() akan menerima argument. dan,
+// kalau displayTodoList() tidak menerima argument, maka dia akan menampilkan data 'todoList' (array) yang ada
+// kalau user menghapus semua karakter di kolom input, event input akan tetap tertrigger. bedanya dia mengirim kolom input kosong
 filterInput.addEventListener("input", function () {
   const keyWord = filterInput.value.toLowerCase();
 
+  // .filter() secara otomatis melakukan iterasi, dan akan dikirim ke parameter 'todo'
   const filterResult = todoList.filter(function (todo) {
     return todo.text.toLowerCase().includes(keyWord);
   });
