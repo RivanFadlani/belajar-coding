@@ -1,3 +1,4 @@
+// Blueprint / Cetakan dari data Expense (pengeluaran)
 class Expense {
   constructor(title, amount, date) {
     this.id = Date.now() + Math.random();
@@ -7,27 +8,48 @@ class Expense {
   }
 }
 
+// Proses manipulasi data
 class Tracker {
   constructor() {
-    this.expenses = [];
+    const savedData = localStorage.getItem("ripunn_expenses");
+
+    if (savedData) {
+      this.expenses = JSON.parse(savedData);
+    } else {
+      this.expenses = [];
+    }
+  }
+
+  // Ubah data array jadi string JSON, lalu simpan permanen di browser
+  saveToStorage() {
+    localStorage.setItem("ripunn_expenses", JSON.stringify(this.expenses));
   }
 
   addExpense(title, amount, date) {
     const addExpense = new Expense(title, amount, date);
     this.expenses.push(addExpense);
+
+    this.saveToStorage();
   }
 
+  // proses menghitung total jumlah pengeluaran menggunakan
   getTotalAmount() {
     let total = 0;
 
+    // perulangan: mengambil data expenses yang dijumlahkan dengan variable total kosong
     for (const item of this.expenses) {
       total += item.amount;
     }
     return total;
   }
 
+  // Memfilter dan menghapus expense berdasarkan id yang dipilih
   deleteExpense(id) {
+    // Proses filter: menyisakan data yang idnya tidak sama dengan id (target) yang dipilih
     this.expenses = this.expenses.filter((item) => item.id !== id);
+
+    // menyingkronkan data setelah penghapusan data
+    this.saveToStorage();
   }
 }
 
@@ -74,20 +96,26 @@ function renderUI() {
 
     // append
     li.appendChild(divInfo);
-    divInfo.append(strongTitle, strongTitle, smallDate);
+    divInfo.append(strongTitle, smallDate);
     li.appendChild(spanAmount);
     li.appendChild(buttonDelete);
 
     expenseList.appendChild(li);
   }
+  document.getElementById("total-amount").textContent =
+    `Rp ${myTracker.getTotalAmount().toLocaleString("id-ID")}`;
 }
 
 const expenseList = document.getElementById("expense-list");
 
+// event: ketika click button delete, hapus dengan mengambil value data-id
+// kalau terjadi event 'click' di element id "expenseList", lakukan:
 expenseList.addEventListener("click", function (event) {
+  // kalau terjadi event 'click' denga target yang mengandung class "delete-btn", lakukan:
   if (event.target.classList.contains("delete-btn")) {
     const deleteId = Number(event.target.getAttribute("data-id"));
 
+    // panggil method deleteExpense()
     myTracker.deleteExpense(deleteId);
     renderUI();
   }
@@ -95,23 +123,4 @@ expenseList.addEventListener("click", function (event) {
 
 // ===
 const myTracker = new Tracker();
-
-// Uji Coba Tambah Data
-myTracker.addExpense("Kopi Skena", 35000, "2026-06-07");
-myTracker.addExpense("Beli Keyboard Baru", 450000, "2026-06-07");
-myTracker.addExpense("Makan Siang", 25000, "2026-06-07");
-
-console.log("1. Cek Semua Data (Harus berisi 3 objek):", myTracker.expenses);
-console.log("2. Total Pengeluaran (Harus 510000):", myTracker.getTotalAmount());
-
-// Uji Coba Hapus Data (Kita ambil ID dari data pertama sebagai contoh)
-if (myTracker.expenses.length > 0) {
-  const idYangMauDihapus = myTracker.expenses[0].id;
-  myTracker.deleteExpense(idYangMauDihapus);
-
-  console.log(
-    "3. Cek Setelah Dihapus (Harus sisa 2 objek):",
-    myTracker.expenses,
-  );
-  console.log("4. Total Baru (Harus 475000):", myTracker.getTotalAmount());
-}
+renderUI();
