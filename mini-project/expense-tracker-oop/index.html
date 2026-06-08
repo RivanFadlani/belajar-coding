@@ -7,6 +7,21 @@
     <title>Expense Tracker OOP</title>
   </head>
   <body>
+    <form name="expense-form">
+      <label for="expense-title">Title: </label>
+      <input type="text" id="expense-title" name="expense-title" />
+      <label for="expense-amount">Amount: </label>
+      <input type="number" id="expense-amount" name="expense-amount" />
+      <label for="expense-date">Date: </label>
+      <input type="date" id="expense-date" name="expense-date" />
+      <button type="submit">Submit</button>
+    </form>
+    <div class="expense-list-container">
+      <h2>Expense List</h2>
+      <ul id="expense-list"></ul>
+      <h3 id="total-amount">0</h3>
+    </div>
+
     <script src="app.js"></script>
   </body>
 </html>
