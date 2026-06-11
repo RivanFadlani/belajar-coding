@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Set Time Out</title>
+  </head>
+  <body>
+    <script>
+      const addElement = () => {
+        const addH1 = document.createElement("h1");
+        addH1.textContent = "Set Time Out";
+
+        document.body.append(addH1);
+      };
+
+      setTimeout(addElement, 5000); // dalam 5000ms, function addElement baru akan dipanggil
+      console.log("program selesai");
+    </script>
+  </body>
+</html>

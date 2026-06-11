@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ajax Send Query Param</title>
+  </head>
+  <body>
+    <form>
+      <label for="search">Search:</label>
+      <input type="text" id="search" name="search" />
+      <br />
+      <input type="button" id="search-btn" value="Search" />
+    </form>
+    <h1 id="response"></h1>
+    <script>
+      function doSearch() {
+        const ajax = new XMLHttpRequest();
+
+        const param = new URLSearchParams();
+        param.append("search", document.getElementById("search").value);
+        param.append("filter", document.getElementById("search").value);
+
+        console.log(typeof param); // object
+
+        ajax.open(
+          "GET",
+          `https://ripun.free.beeceptor.com?${param.toString()}`, // cek headers -> Request URL
+        );
+        ajax.addEventListener("load", function () {
+          const response = document.getElementById("response");
+          response.textContent = ajax.responseText;
+        });
+
+        ajax.send();
+      }
+
+      document.getElementById("search-btn").addEventListener("click", doSearch);
+    </script>
+  </body>
+</html>
