@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Promise</title>
+  </head>
+  <body>
+    <script>
+      // Fungsi di dalam new Promise (disebut executor function)
+      // akan langsung dieksekusi secara synchronous dan seketika (eager/immediate) saat objek Promise tersebut dibuat (new).
+      // Proses instansiasi new Promise(...) itulah yang memicu pengeksekusian kodenya, tanpa perlu menunggu .then() atau .catch().
+      const promise = new Promise(function (resolve, reject) {
+        const ajax = new XMLHttpRequest();
+
+        ajax.open("GET", "api/product.json");
+        ajax.addEventListener("load", function () {
+          if (ajax.status === 200) {
+            resolve(JSON.parse(ajax.responseText));
+          } else {
+            reject(`Error Get Product With Response: ${ajax.responseText}`);
+          }
+        });
+        ajax.send();
+      });
+
+      console.log(promise);
+      // kalau status === 200 OK -> PromiseState: "fulfilled" (value: object)
+      // kalau status === 404 Not Found -> PromiseState: "rejected" (value: `Error ...`)
+      // kalau tidak memanggil resolve & reject -> PromiseState: "pending" (value: undefined)
+      // Saat awal dibuat / Belum ada response -> PromiseState: "pending" (value: undefined)
+    </script>
+  </body>
+</html>

@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Promise Static Method</title>
+  </head>
+  <body>
+    <script>
+      function getProduct(product) {
+        return new Promise(function (resolve, reject) {
+          const ajax = new XMLHttpRequest();
+          ajax.open("GET", `api/${product}.json`);
+          ajax.addEventListener("load", function () {
+            if (ajax.status === 200) {
+              resolve(JSON.parse(ajax.responseText));
+            } else {
+              reject(`Error Get Product With Response: ${ajax.responseText}`);
+            }
+          });
+          ajax.send();
+        });
+      }
+
+      // 1. CARA KERJA Promise.all()
+      // - Promise.all() menerima satu argumen berupa ARRAY yang berisi beberapa Promise.
+      // - Method ini akan menjalankan semua Promise tersebut secara bersamaan (parallel/concurrently).
+      // - Promise.all() akan menunggu hingga SEMUA Promise di dalam array tersebut berstatus 'resolve' (sukses).
+      const promise = Promise.all([
+        getProduct("product1"), // Promise ke-1 (indeks 0)
+        getProduct("product2"), // Promise ke-2 (indeks 1)
+        getProduct("product3"), // Promise ke-3 (indeks 2)
+      ]);
+
+      // 2. BAGAIMANA .then() MENERIMA ARGUMEN?
+      // - Ketika SEMUA Promise di dalam Promise.all() sukses, Promise.all() sendiri akan menghasilkan resolve.
+      // - Nilai resolve dari Promise.all() adalah sebuah ARRAY yang berisi seluruh hasil dari masing-masing Promise.
+      // - Urutan hasil di dalam array 'products' dijamin SAMA PERSIS dengan urutan pemanggilan di Promise.all().
+      //   Artinya:
+      //   - products[0] = hasil dari getProduct("product1")
+      //   - products[1] = hasil dari getProduct("product2")
+      //   - products[2] = hasil dari getProduct("product3")
+      //
+      // - CATATAN: Jika ada SATU saja Promise yang gagal (reject), maka Promise.all() akan langsung gagal (reject)
+      //   dan melempar error-nya ke .catch(), tanpa memedulikan Promise lain yang sukses.
+      promise.then(function (products) {
+        console.info(products); // 'products' adalah array berisi 3 objek produk yang sukses diambil
+      });
+    </script>
+  </body>
+</html>
