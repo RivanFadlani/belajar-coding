@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Async</title>
+  </head>
+  <body>
+    <script>
+      // Async:
+      // Async digunakan untuk mendapatkan bahwa Function tersebut adalah Async, dan mengembalikan Promise
+      // Dengan menggunakan Async, kita tidak perlu membuat Promise manual lagi
+
+      // Promise<String>
+      function getNamePromise() {
+        return new Promise(function (resolve, reject) {
+          resolve("Ripunn Promise");
+        });
+      }
+
+      // Promise<String>
+      // tidak perlu membuat Promise manual lagi
+      // sudah sekaligus return Promise
+      async function getNameAsync() {
+        // tidak apa-apa kalau membuat promise manual di sini, tidak akan menjadi Promise<Promise <String>>
+        return "Ripunn Async";
+      }
+
+      // hasilnya sama saja
+      getNamePromise().then(function (name) {
+        return console.info(name);
+      });
+
+      // * cara pengembalian .then callback ini sama saja, cuma berbeda di function biasa dengan arrow function
+
+      getNameAsync().then((name) => console.info(name));
+    </script>
+  </body>
+</html>
