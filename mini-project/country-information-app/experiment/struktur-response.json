@@ -1,0 +1,163 @@
+{
+  "data": {
+    "objects": {
+      "names": {
+        "common": "Indonesia",
+        "official": "Republic of Indonesia",
+        "alternates": ["RI"],
+        "native": {
+          "ind": { "common": "Indonesia", "official": "Republik Indonesia" }
+        },
+        "translations": {
+          "deu": { "common": "Indonesien", "official": "Republik Indonesien" }
+        }
+      },
+
+      "codes": {
+        "alpha_2": "ID",
+        "alpha_3": "IDN",
+        "ccn3": "360",
+        "fips": "ID",
+        "gec": "ID",
+        "cioc": "INA",
+        "fifa": "IDN"
+      },
+
+      "flag": {
+        "emoji": "🇮🇩",
+        "unicode": "U+1F1EE U+1F1E9",
+        "html_entity": "&#127470;&#127465;",
+        "url_png": "https://flags.restcountries.com/v5/w640/id.png",
+        "url_svg": "https://flags.restcountries.com/v5/svg/id.svg",
+        "description": "Two equal horizontal bands of red (top) and white"
+      },
+
+      "capitals": [
+        {
+          "name": "Jakarta",
+          "primary": true,
+          "coordinates": { "lat": -6.21, "lng": 106.85 },
+          "attributes": {
+            "constitutional": true,
+            "administrative": true,
+            "executive": true
+          }
+        }
+      ],
+
+      "region": "Asia",
+      "subregion": "South-Eastern Asia",
+      "continents": ["Asia"],
+      "landlocked": false,
+      "borders": ["MYS", "PNG", "TLS"],
+      "timezones": ["UTC+07:00", "UTC+08:00", "UTC+09:00"],
+      "population": 277534122,
+
+      "area": {
+        "kilometers": 1904569,
+        "miles": 735358
+      },
+
+      "coordinates": {
+        "lat": -5.0,
+        "lng": 120.0
+      },
+
+      "languages": [
+        {
+          "iso639_1": "id",
+          "iso639_3": "ind",
+          "bcp47": "id",
+          "name": "Indonesian",
+          "native_name": "Bahasa Indonesia"
+        }
+      ],
+
+      "currencies": {
+        "IDR": { "name": "Indonesian rupiah", "symbol": "Rp" }
+      },
+
+      "calling_codes": ["62"],
+      "tlds": [".id"],
+
+      "demonyms": {
+        "eng": { "m": "Indonesian", "f": "Indonesian" },
+        "ind": { "m": "Orang Indonesia", "f": "Orang Indonesia" }
+      },
+
+      "cars": {
+        "driving_side": "left",
+        "signs": ["RI"]
+      },
+
+      "memberships": {
+        "un": true,
+        "eu": false,
+        "eurozone": false,
+        "schengen": false,
+        "nato": false,
+        "asean": true,
+        "g20": true,
+        "commonwealth": false,
+        "oecd": false,
+        "brics": false,
+        "opec": false,
+        "african_union": false,
+        "arab_league": false
+      },
+
+      "classification": {
+        "sovereign": true,
+        "un_member": true,
+        "un_observer": false,
+        "disputed": false,
+        "dependency": false,
+        "dependency_type": null,
+        "iso_status": "official"
+      },
+
+      "date": {
+        "start_of_week": "monday",
+        "academic_year_start": { "month": 7, "day": 1 },
+        "fiscal_year_start": {
+          "government": { "month": 1, "day": 1 },
+          "corporate": { "month": 1, "day": 1, "basis": "convention" },
+          "personal": { "month": 1, "day": 1 }
+        }
+      },
+
+      "number_format": {
+        "decimal_separator": ",",
+        "thousands_separator": "."
+      },
+
+      "postal_code": {
+        "format": "#####",
+        "regex": "^(\\d{5})$"
+      },
+
+      "economy": {
+        "gini_coefficient": { "2020": 38.2 }
+      },
+
+      "links": {
+        "official": "https://www.indonesia.go.id",
+        "wikipedia": "https://en.wikipedia.org/wiki/Indonesia",
+        "open_street_maps": "https://www.openstreetmap.org/relation/21335",
+        "google_maps": "https://goo.gl/maps/XXX"
+      },
+
+      "government_type": "Presidential republic",
+      "leaders": [
+        /* Premium only */
+      ]
+    },
+    "meta": {
+      "total": 249,
+      "count": 1,
+      "limit": 25,
+      "offset": 0,
+      "more": false
+    }
+  }
+}
