@@ -1,0 +1,12 @@
+/* Set-Up css seperti biasa */
+
+.title {
+  color: royalblue;
+  background-color: pink;
+}
+
+.content {
+  font-weight: bold;
+  color: white;
+  background-color: royalblue;
+}
