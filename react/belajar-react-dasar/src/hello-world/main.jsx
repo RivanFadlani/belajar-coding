@@ -12,9 +12,11 @@ import SayHelloForm from "../form/Form";
 import Counter from "../form/Counter";
 import NoState from "../form/CounterTanpaState";
 
-// dapatkan id 'root' di file 'hello-world.html'
-// StrictMode merender Component 2x
+// 1. Trigger Render, terjadi karena dua hal
+// 1.1 Inisialisasi awal Component, yang dilakukan menggunakan method render() *lanjut di Counter.jsx
 createRoot(document.getElementById("root")).render(
+  // 2. Render Component
+  // 2.1 Pada proses inisialisasi awal, React akan memanggil Root Component (paling atas)
   <StrictMode>
     <Container>
       <HelloWorld />
@@ -33,11 +35,12 @@ createRoot(document.getElementById("root")).render(
 
       <SayHelloForm />
 
-      {/* State Terisolasi dan Private */}
-      {/* Akan ter-render terpisah, tidak akan sama state-nya */}
-      <Counter />
-      <Counter />
-      {/* Ini Component Counter tanpa menggunakan State */}
+      {/* 2.2 Tapi, Pada saat proses render ulang, React hanya akan memanggil ulang Component yang state nya berubah */}
+      {/*     Kalau terjadi proses render ulang di 'Counter 1', maka React akan memanggil ulang Component yang state-nya berubah saja. */}
+      {/*     Jadi, cuma Component dengan State yang berubah saja yang akan di Render Ulang. */}
+      {/*     Setelah proses Render selesai, React akan melakukan proses Commit ke DOM (Simpan perubahan ke DOM) */}
+      <Counter /> {/* Counter 1 */}
+      <Counter /> {/* Counter 2 */}
       <NoState />
     </Container>
   </StrictMode >
