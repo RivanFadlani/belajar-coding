@@ -42,15 +42,19 @@ export default function Counter() {
     // Di dalam fungsi ini, nilai 'counter' dibekukan di angka 0.
     // =========================================================================
 
+    // === State Updates Start
     // Tiga baris setCounter ini bertindak sebagai TRIGGER (Pemicu) untuk Snapshot berikutnya.
-    // React tidak langsung mengubah angka saat baris ini dibaca. React hanya mencatat antrean.
-    setCounter(counter + 1) // Antrean 1: "Tolong siapkan snapshot baru dengan nilai 0 + 1"
-    setCounter(counter + 1) // Antrean 2: "Tolong siapkan snapshot baru dengan nilai 0 + 1"
-    setCounter(counter + 1) // Antrean 3: "Tolong siapkan snapshot baru dengan nilai 0 + 1"
+    // Karena menggunakan lambda/arrow function, React akan menghitung nilainya secara berantai 
+    // di dalam memori antrean (pending queue), meskipun variabel 'counter' di snapshot saat ini belum berubah.
+    // Dan di luar dari antrean state ini, snapshot komponen tetap beku (tidak berubah).
 
-    // Karena fungsi handleClick belum selesai, kita belum pindah snapshot.
-    // Nilai 'counter' di bawah ini masih mengambil data dari Snapshot 1 (yaitu 0).
-    console.info(counter) // Output di konsol: 0
+    setCounter((c) => c + 1) // Antrean 1: Mengambil state terakhir (0) + 1 = 1
+    setCounter((c) => c + 1) // Antrean 2: Mengambil hasil Antrean 1 (1) + 1 = 2
+    setCounter((c) => c + 1) // Antrean 3: Mengambil hasil Antrean 2 (2) + 1 = 3
+
+    console.info(counter) // Jika di-log di sini, hasilnya TETAP 0! Karena kita masih di Snapshot lama.
+    // Baru setelah fungsi ini selesai, Snapshot berikutnya lahir dengan nilai counter = 3.  
+    // === State Updates End
 
     // =========================================================================
     // [FASE 3] FUNGSI SELESAI & LAHIRNYA SNAPSHOT 2 (Hanya di Komponen Ini)
