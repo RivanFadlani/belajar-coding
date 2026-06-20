@@ -1,49 +1,38 @@
-import { useState } from "react"
+// 1. Mengimpor 'useImmer' dari library 'use-immer'.
+// Library ini bertugas mendengarkan perubahan "tiruan" lalu mengubahnya menjadi state baru yang aman bagi React.
 
-// ==========================================
-// 1. MENENTUKAN BLUEPRINT DATA AWAL
-// ==========================================
-// Objek ini berfungsi sebagai cetakan awal untuk state kita.
-// Isinya adalah string kosong untuk properti 'name' dan 'message'.
+import { useImmer } from "use-immer"
 const initialData = {
   name: "",
   message: ""
 }
 
 export default function ContactForm() {
-  // ==========================================
-  // 2. DEKLARASI STATE
-  // ==========================================
-  // React membuat state bernama 'contact' dan fungsi pengubahnya 'setContact'.
-  // Saat pertama kali aplikasi berjalan (Initial Render), isi 'contact' adalah { name: "", message: "" }.
-  const [contact, setContact] = useState(initialData)
-
-  // ==========================================
-  // 3. FUNGSI HANDLER KETIKA INPUT NAMA BERUBAH
-  // ==========================================
+  // 2. Mengganti useState dengan useImmer.
+  // Cara kerjanya mirip: 'contact' adalah data state-nya, dan 'setContact' adalah fungsi pengubahnya.
+  const [contact, setContact] = useImmer(initialData)
   function handleNameChange(e) {
-    // e.target.value menangkap huruf/karakter terbaru yang diketik oleh user.
-    setContact({
-      // (...contact) adalah Spread Operator. 
-      // Fungsinya MENYALIN semua data lama di dalam objek agar tidak hilang (seperti isi 'message').
-      ...contact,
+    // 3. DI SINI KEAJAIBAN IMMER TERJADI:
+    // Ketimbang bikin objek baru pake {...contact}, kita memasukkan fungsi dengan parameter bernama 'draft'.
+    setContact(draft => {
+      // 'draft' adalah "Kertas Coretan" (Proxy) yang disediakan Immer, berisi salinan dari state 'contact' saat ini.
+      // Di dalam coretan ini, kamu DILEGALKAN untuk mengubah data secara langsung (mutasi) seperti JavaScript biasa.
+      draft.name = e.target.value
 
-      // Kemudian, kita menimpa (overwrite) khusus properti 'name' dengan value baru dari input.
-      name: e.target.value
+      // CARA KERJA DI BALIK LAYAR IMMER:
+      // Setelah baris di atas selesai dieksekusi, Immer akan memeriksa "coretan" pada 'draft'.
+      // Immer melihat: "Oh, si user cuma ngubah properti 'name' menjadi value baru."
+      // Secara otomatis, Immer akan membuatkan OBJEK BARU yang berisi data 'message' lama + 'name' yang baru,
+      // lalu menyerahkannya ke React untuk memicu re-render. State asli kamu tetap aman dan tidak rusak!
     })
-    // ALUR SETELAH INI: State 'contact' berubah -> React mendeteksi perubahan -> Komponen di-render ulang!
   }
 
-  // ==========================================
-  // 4. FUNGSI HANDLER KETIKA INPUT PESAN BERUBAH
-  // ==========================================
   function handleMessageChange(e) {
-    setContact({
-      // Sama seperti di atas, salin dulu semua data lama (termasuk 'name' yang sudah diketik).
-      ...contact,
-
-      // Lalu timpa properti 'message' dengan value baru dari input pesan.
-      message: e.target.value
+    // 4. EFEK KEUNTUNGAN MENGGUNAKAN IMMER:
+    // Kamu tidak perlu takut kehilangan data 'name' yang sudah diketik sebelumnya.
+    // Immer tahu kalau kamu HANYA menyentuh properti 'message', jadi properti lainnya otomatis dipertahankan.
+    setContact(draft => {
+      draft.message = e.target.value
     })
     // ALUR SETELAH INI: State 'contact' berubah -> React mendeteksi perubahan -> Komponen di-render ulang!
   }
