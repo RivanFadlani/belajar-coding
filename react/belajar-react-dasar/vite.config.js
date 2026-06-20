@@ -10,6 +10,7 @@ export default defineConfig({
         // file yang akan dirender
         index: "index.html",
         hello_world: "hello-world.html",
+        contact: "contact.html",
       },
     },
   },
