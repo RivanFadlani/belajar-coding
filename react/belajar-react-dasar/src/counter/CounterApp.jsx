@@ -10,26 +10,25 @@ export function CounterApp() {
 
   return (
     <div>
-      {/* Cara Reset State P.2 */}
+      {/* Cara Reset State P.3 */}
       {/* ===
-      Mengubah posisi component. Karena React menyimpan State sesuai dengan
-      Component dan Posisinya (struktur UI).
-
-      Struktur UI yang dimaksud adalah:
-      - pada awalnya Component Counter disimpan di posisi 'div -> Counter'
-      - lalu, karena kondisi yang ke dua merubah posisi Component Counter menjadi 
-        'section -> counter', maka otomatis react akan menganggap Component Counter
-        sudah dipindahkan dan State pun akan di-reset
+      POSISI COMPONENT BERBEDA (Dua Slot Terpisah di Render Tree)
       === */}
-      {show ? (
-        <div>
-          <Counter name="ripunn" />
-        </div>
-      ) : (
-        <section>
-          <Counter name="rivan" />
-        </section>
-      )}
+
+      {/* {...} bukan Component, melainkan wadah/ruang untuk menjalankan logika JavaScript */}
+      {/* dalam kasus ini adalah 'show && </>' */}
+      {/* disebut beda posisi karena kita membuat dua baris perintah independen
+          lalu, karena ada 2 kurung kurawal juga membuat React melihatnya sebagai 
+          dua koordinat/slot yang berbeda di dalam Render Tree */}
+
+      {/* Component Counter 1 (Menempati Slot Posisi A / Baris 1) */}
+      {/* Jika 'show' true -> Instance ini dibuat. Jika false -> Instance ini BENAR-BENAR DIHANCURKAN (State Hilang) */}
+      {show && <Counter name="ripunn" />}
+
+      {/* Component Counter 2 (Menempati Slot Posisi B / Baris 2) */}
+      {/* Jika 'show' false -> Instance ini dibuat dari nol dengan State baru (0) */}
+      {!show && <Counter name="rivan" />}
+
       <input type="checkbox" checked={show} onChange={handleChange} />
     </div>
   )
