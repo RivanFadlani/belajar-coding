@@ -10,17 +10,35 @@ export function CounterApp() {
 
   return (
     <div>
-      <Counter />
-      {/*
-        Conditional Render menggunakan operator && (Short-circuit):
-        - Jika show = true, component <Counter /> kedua akan dibuat dan ditampilkan.
-        - Jika show = false, component 'Counter' akan dihapus dari component 'CounterApp' atau tidak ditampilkan (unmounted).
-        - ketika dihapus dari component, maka State 'Counter' akan dirender dari ulang lagi (initialState = 0)
-        - jadi, pastikan component selalu ditampilkan agar State tidak dirender dari ulang lagi
+      {/* ----------------------------------------------------------------------
+        RENDER KONDISIONAL: OPERATOR TERNARY (? :) & KONSEP "POSISI YANG SAMA"
+        ----------------------------------------------------------------------
+        Sintaks dari eksperimen Anda: {show ? <Counter name="ripunn" /> : <Counter name="rivan" />}
+        
+        MENGAPA KETIKA 'SHOW' BERUBAH, STATE COUNTER TIDAK IKUT RESET?
+        
+        - Hanya Ada 1 Slot Posisi: 
+          Bagi React, satu operator ternary hanya dihitung sebagai SATU slot posisi 
+          tetap di Render Tree.
+        
+        - Hanya Ada 1 Instance (Wujud Fisik):
+          React tidak pernah membuat 2 komponen lalu menghancurkan salah satunya. 
+          Sejak awal, React hanya menghidupkan 1 instance di slot tersebut.
+        
+        - Hanya Mengupdate Props:
+          Saat 'show' berubah dari true ke false, React melihat tipe komponennya masih 
+          sama-sama <Counter />. React memutuskan untuk menggunakan kembali (re-use) 
+          instance fisik yang ada, dan HANYA mengubah datanya (props) dari 
+          name="ripunn" menjadi name="rivan".
+           
+        - Dampak pada State:
+           Karena komponennya tidak pernah dihancurkan (unmounted), maka STATE internal 
+           di dalam <Counter /> (seperti angka hitungan) TETAP DIPERTAHANKAN.
 
-        *note: Di dalam React, nilai false, null, atau undefined tidak akan digambar apa-apa di layar (diabaikan).
+        INTINYA: - jadi intinya react hanya merender ulang propsnya saja, tidak dengan state. 
+                   karena component counter tidak pernah benar-benar hilang dari tampilan. 
       */}
-      {show && <Counter />}
+      {show ? <Counter name="ripunn" /> : <Counter name="rivan" />}
       <input type="checkbox" checked={show} onChange={handleChange} />
     </div>
   )
