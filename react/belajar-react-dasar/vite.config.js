@@ -16,6 +16,7 @@ export default defineConfig({
         note: "note.html", // reducer
         profile: "profile.html", // context
         timer: "timer.html", // ref
+        guestbook: "guestbook.html", // dom dengan ref
       },
     },
   },
