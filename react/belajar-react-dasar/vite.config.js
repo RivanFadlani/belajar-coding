@@ -13,8 +13,9 @@ export default defineConfig({
         contact: "contact.html",
         task: "task.html",
         counter: "counter.html",
-        note: "note.html",
-        profile: "profile.html",
+        note: "note.html", // reducer
+        profile: "profile.html", // context
+        timer: "timer.html", // ref
       },
     },
   },
