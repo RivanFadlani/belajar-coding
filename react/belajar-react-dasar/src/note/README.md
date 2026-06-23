@@ -80,3 +80,110 @@ Seluruh data catatan disimpan secara terpusat di komponen **`NoteApp`** mengguna
   * Ketika user menandai selesai (mencentang checkbox) atau mengubah teks (melalui mode edit), `<Note />` memanggil fungsi `onChange(newNote)` dengan membawa objek catatan baru yang sudah diperbarui nilainya.
   * Ketika user menekan tombol hapus, `<Note />` memanggil `onDelete(note)`.
   * Kedua aksi di atas akan mengalir kembali ke atas menuju **`NoteApp`** untuk memperbarui state utama, yang kemudian memicu render ulang aplikasi dengan data terbaru.
+
+---
+
+## 3. Alur Komunikasi Handler Antar Komponen
+
+Handler (callback) dikirim dari **NoteApp** sebagai props, lalu diteruskan melewati komponen perantara hingga mencapai komponen yang membutuhkannya. Setiap handler memiliki pola komunikasi yang berbeda.
+
+```text
++---------------------+
+|      NoteApp        |  (State Owner)
+|                     |
+|  handleAddNote      |<--- Menerima: text (string)
+|  handleChangeNote   |<--- Menerima: note (object hasil jadi dari anak)
+|  handleChangeDelete |<--- Menerima: note (object)
++---------------------+
+    |         |         |
+    v         v         v
++----------+  +----------+
+| NoteForm |  | NoteList |
++----------+  +----------+
+                  |
+                  v
+              +----------+
+              |   Note   |
+              +----------+
+```
+
+### A. Handler `onAddNote` (Add)
+
+| Komponen | Peran |
+|---|---|
+| **NoteApp** | Mendefinisikan `handleAddNote(text)` → `dispatch({ action: 'ADD_NOTE', text })` |
+| **NoteForm** | Menerima props `onAddNote`. Saat submit, memanggil `onAddNote(localText)`. |
+
+**Alur data:** `string text` ➝ `NoteForm.onAddNote(text)` ➝ `NoteApp.handleAddNote(text)` ➝ `dispatch`
+
+### B. Handler `onChange` (Edit Text / Checklist)
+
+Handler ini memiliki **pola komunikasi dua langkah**, di mana komponen anak mengolah event DOM terlebih dahulu sebelum mengirim hasilnya ke induk.
+
+| Komponen | Peran |
+|---|---|
+| **NoteApp** | Mendefinisikan `handleChangeNote(note)` → `dispatch({ ...note, action: 'CHANGE_NOTE' })` |
+| **NoteList** | Meneruskan props `onChange` tanpa modifikasi ke `<Note />` |
+| **Note** | Menerima event DOM, membuat objek note baru, lalu memanggil `onChange(newNote)` |
+
+**Alur data:**
+
+```
+Event DOM (e.target.value / e.target.checked)
+  ➝ Note.handleChangeText(e) atau Note.handleChangeDone(e)
+  ➝ Membuat objek baru: { ...note, text: e.target.value } / { ...note, done: e.target.checked }
+  ➝ onChange(newNote)
+  ➝ NoteApp.handleChangeNote(newNote)
+  ➝ dispatch({ ...newNote, action: 'CHANGE_NOTE' })
+```
+
+### C. Handler `onDelete` (Delete)
+
+| Komponen | Peran |
+|---|---|
+| **NoteApp** | Mendefinisikan `handleChangeDelete(note)` → `dispatch({ action: 'DELETE_NOTE', id: note.id })` |
+| **NoteList** | Meneruskan props `onDelete` tanpa modifikasi ke `<Note />` |
+| **Note** | Saat tombol Delete diklik, memanggil `onDelete(note)` dengan object note utuh |
+
+**Alur data:**
+
+```
+note object (dari iterasi NoteList)
+  ➝ Note.onClick ➝ onDelete(note)
+  ➝ NoteApp.handleChangeDelete(note)
+  ➝ dispatch({ action: 'DELETE_NOTE', id: note.id })
+```
+
+### Poin Penting:
+
+- **NoteApp hanya menerima data olahan (processed data), bukan raw event DOM.** Komponen anak (`Note`) bertanggung jawab mengekstrak nilai dari event sebelum mengirimkannya ke atas.
+- **NoteList bertindak sebagai *pass-through* / perantara** — ia tidak mengubah data atau callback, hanya meneruskannya ke anak.
+- **NoteApp menggunakan `...note` (spread operator)** untuk membongkar properti objek note ke dalam objek action yang dikirim ke reducer.
+
+#### Kesimpulan Untuk Handler
+
+Di dalam fungsi handleChangeNote, parameter note adalah sebuah objek catatan tunggal yang dikirim dari komponen Note.jsx. 
+Penggunaan ...note (spread operator) berfungsi untuk menyebarkan (membongkar) semua properti yang ada di dalam objek note tersebut ke dalam objek action yang dikirim ke dispatch.
+Jika objek note yang diterima berisi:
+
+```javascript
+{
+  id: 0,
+  text: "Learn HTML (diubah)",
+  done: true
+}
+```
+
+Maka, ...note akan membongkar seluruh isi properti tersebut sehingga panggilan dispatch akan menghasilkan objek seperti ini:
+
+```javascript
+dispatch({
+  id: 0,
+  text: "Learn HTML (diubah)",
+  done: true,
+  action: 'CHANGE_NOTE' // (atau type: 'CHANGE_NOTE')
+})
+```
+
+Dengan cara ini, reducer (notesReducer) bisa langsung mengakses properti action.id, action.text, dan action.done (atau action.type jika sudah diperbaiki) secara langsung dari objek action tersebut.
+
