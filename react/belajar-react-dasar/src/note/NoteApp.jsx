@@ -8,6 +8,7 @@
 import { useImmerReducer } from "use-immer"
 import NoteForm from "./NoteForm"
 import NoteList from "./NoteList"
+import { NotesContext, NotesDispatchContext } from "./NoteContext"
 
 // Variabel auto-increment untuk menghasilkan ID unik pada setiap catatan baru
 let id = 0
@@ -43,33 +44,13 @@ function notesReducer(draft, action) {
 export default function NoteApp() {
   const [notes, dispatch] = useImmerReducer(notesReducer, initialNotes)
 
-  const handleAddNote = (text) => {
-    // dispatch adalah jembatan untuk mengirim Object (action) dari Component menuju ke reducer.
-    dispatch({
-      type: 'ADD_NOTE',
-      text: text
-    })
-  }
-
-  const handleChangeNote = (note) => {
-    dispatch({
-      ...note,
-      type: 'CHANGE_NOTE'
-    })
-  }
-
-  const handleChangeDelete = (note) => {
-    dispatch({
-      type: 'DELETE_NOTE',
-      id: note.id
-    })
-  }
-
   return (
-    <div>
-      <h1>Note App</h1>
-      <NoteForm onAddNote={handleAddNote} />
-      <NoteList notes={notes} onChange={handleChangeNote} onDelete={handleChangeDelete} />
-    </div>
+    <NotesContext.Provider value={notes}>
+      <NotesDispatchContext.Provider value={dispatch}>
+        <h1>Note App</h1>
+        <NoteForm />
+        <NoteList />
+      </NotesDispatchContext.Provider>
+    </NotesContext.Provider>
   )
 }
