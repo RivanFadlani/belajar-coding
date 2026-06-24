@@ -17,6 +17,7 @@ export default defineConfig({
         profile: "profile.html", // context
         timer: "timer.html", // ref
         guestbook: "guestbook.html", // dom dengan ref
+        product: "product.html", // effect
       },
     },
   },
