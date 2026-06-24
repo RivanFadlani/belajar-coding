@@ -1,9 +1,22 @@
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useState } from "react"
 import Product from "./Product"
 
 export default function ProductList() {
   const [products, setProducts] = useState([])
-  const loaded = useRef(false)
+  // Ref dependencies: ubah loaded dari Ref menjadi State
+  const [loaded, setLoaded] = useState(false)
+
+  function handleLoad() {
+    console.info("Handle Loaded")
+    setLoaded(true) // Saat tombol diklik, state loaded berubah -> memicu render ulang komponen -> karena nilai 'loaded' berubah,
+    //                 useEffect baru akan dipicu setelah render selesai
+  }
+
+  function handleUnload() {
+    console.info("Handle Unload")
+    setLoaded(false) // Saat tombol diklik, state loaded berubah -> memicu render ulang komponen -> karena nilai 'loaded' berubah,
+    //                  useEffect baru akan dipicu setelah render selesai
+  }
 
   // Bagaimana UseEffect dijalankan?
   // 1. React membaca kode JSX Component
@@ -12,16 +25,14 @@ export default function ProductList() {
   // 4. useEffect dijalankan di latar belakang
   useEffect(() => {
     console.info("Call Use Effect")
-    if (loaded.current === false) {
+    // akan dieksekusi ketika loaded === true
+    if (loaded) {
       fetch("/products.json")
         // 1. Jika request berhasil, response mentah dibaca dan diproses menjadi JSON (mengembalikan Promise baru)
         .then((response) => response.json())
 
         // 2. Setelah konversi JSON selesai, hasilnya ditangkap di param 'data', lalu disimpan ke state 'products' (memicu render ulang UI)
         .then((data) => setProducts(data))
-
-        // 3. Mengubah nilai ref menjadi true agar pada render berikutnya, blok IF mendeteksi data sudah ada dan tidak melakukan fetch ulang
-        .then(() => loaded.current = true)
     }
 
     // akan dijalankan ketika
@@ -30,11 +41,22 @@ export default function ProductList() {
     return () => {
       console.info("Product List Component Unmounted")
     }
-  })
+    // parameter ke-dua: dependencies yang bentuknya adalah array
+  }, [loaded]) // initialState = false
+  // 1. Awalnya `loaded` bernilai false. Render pertama selesai -> useEffect dijalankan (karena ini render pertama).
+  // 2. Tombol diklik -> setLoaded(true) dipanggil -> Komponen merender ulang dirinya (fungsi ProductList() dijalankan lagi).
+  // 3. Setelah render kedua selesai, React mengecek array dependensi ini.
+  // 4. Karena nilai `loaded` BERUBAH (dari false menjadi true), maka fungsi di dalam useEffect DIJALANKAN LAGI.
+  // 5. Namun ketika tombol diklik lagi, maka useEffect tidak akan menjalankan ulang useEffect. karena state tidak ada perubahan nilai
 
   return (
-    products.map((product) => (
-      <Product key={product.id} product={product} />
-    ))
+    <>
+      <h1>Product</h1>
+      <button onClick={handleLoad}>Load Products</button>
+      <button onClick={handleUnload}>Unload Products</button>
+      {products.map((product) => (
+        <Product key={product.id} product={product} />
+      ))}
+    </>
   )
 }
