@@ -32,15 +32,18 @@ export default function ProductList() {
   // 5. useEffect akan membaca dari dependencies dulu, baru setup jika dependencies ada perubahan state
   useEffect(() => {
     console.info("== Call Use Effect")
-    // akan dieksekusi ketika loaded === true
-    if (loaded) {
-      fetch("/products.json")
-        // 1. Jika request berhasil, response mentah dibaca dan diproses menjadi JSON (mengembalikan Promise baru)
-        .then((response) => response.json())
 
-        // 2. Setelah konversi JSON selesai, hasilnya ditangkap di param 'data', lalu disimpan ke state 'products' (memicu render ulang UI)
-        .then((data) => setProducts(data))
+    // === ASYNC CODE DI EFFECT ===
+    async function fetchProducts() {
+      const response = await fetch("/products.json")
+      const data = await response.json()
+      setProducts(data)
     }
+
+    if (loaded) {
+      fetchProducts()
+    }
+    // === --- ===
 
     // akan dijalankan ketika
     // Component dihilangkan (Unmounted), atau
