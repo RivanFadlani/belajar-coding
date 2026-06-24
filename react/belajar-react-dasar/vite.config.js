@@ -18,6 +18,7 @@ export default defineConfig({
         timer: "timer.html", // ref
         guestbook: "guestbook.html", // dom dengan ref
         product: "product.html", // effect
+        online: "online.html", // custom hooks
       },
     },
   },
