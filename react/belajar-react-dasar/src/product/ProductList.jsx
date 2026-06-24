@@ -18,13 +18,20 @@ export default function ProductList() {
     //                  useEffect baru akan dipicu setelah render selesai
   }
 
+  useEffect(() => {
+    console.info("=== Call Use Effect With []")
+  }, [])
+  // Array kosong pada dependencies berarti useEffect HANYA akan dijalankan 1 kali saja di awal (saat komponen pertama kali muncul/mounted).
+  // Setelah itu, efek ini tidak akan pernah dijalankan lagi, meskipun komponen mengalami render ulang berkali-kali akibat perubahan state lain.
+
   // Bagaimana UseEffect dijalankan?
   // 1. React membaca kode JSX Component
   // 2. React me-render component ke DOM (layar)
   // 3. Component sudah selesai terpasang (mounted)
   // 4. useEffect dijalankan di latar belakang
+  // 5. useEffect akan membaca dari dependencies dulu, baru setup jika dependencies ada perubahan state
   useEffect(() => {
-    console.info("Call Use Effect")
+    console.info("== Call Use Effect")
     // akan dieksekusi ketika loaded === true
     if (loaded) {
       fetch("/products.json")
