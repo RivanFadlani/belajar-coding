@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scope</title>
+</head>
+
+<body>
+  <script>
+
+    // Baca komentar paling bawah untuk memahami maksud dari level dalam scope itu apa
+
+    // === General Scope
+    // general scope
+    let counter = 0;
+
+    // general scope
+    function hitMe() {
+      // local scope, yang di dalam blok kode ini adalah local scope
+      counter++
+    }
+
+    hitMe(); // kalau argument hitMe tidak dipanggil, maka counter tidak akan terhitung jika dipanggil oleh variabel
+    hitMe();
+
+    // general scope
+    console.info(counter);
+
+    // === Local Scope
+    // general scope
+    function first() {
+      // local scope
+      let firstVariable = "first";
+    }
+
+    // general scope
+    function second() {
+      // local scope
+      let secondVariable = "second";
+      // console.info(firstVariable); // ERROR, tidak bisa mengakses variable antar function (harus satu function)
+      // APA YANG ADA DI DALAM FUNCTION, AKAN TETAP DI DALAM FUNCTION
+    }
+
+    first();
+    second();
+
+    // console.info(firstVariable); // ERROR, function info tidak satu level dengan variable firstVariable yang notabenenya ada di dalam function first
+
+    // === Nested Function
+    function nestedFunction() {
+      // LEVEL ATAS
+      let nestedVariable = "FIRST";
+      function secondNestedFunction() {
+        // LEVEL BAWAH
+        console.info(nestedVariable);
+        const secondNestedVariable = "SECOND;"
+      }
+
+      // LEVEL ATAS
+      secondNestedFunction();
+      console.info(secondNestedVariable); // ERROR, secondNestedVariable berada 1 level di bawah function info
+    }
+    nestedFunction();
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Class Inheritance</title>
+  </head>
+  <body>
+    <script>
+      class Employee {
+        sayHello(name) {
+          console.info(`Halo, ${name}! my name is employee ${this.name}`);
+        }
+      }
+
+      class Manager extends Employee {
+        // inherit ke class Employee
+        // jadi dia bisa mewariskan object yang ada di prototype si parent (yaitu Employee)
+        sayHello(name) {
+          console.info(`Halo, ${name}! my name is manager ${this.name}`); // karena dia punya object sayHello juga, maka dia akan menampilkan hasil object dia terlebih dahulu
+          // kalau kode blok console info ini kita komentar. maka dia akan mewariskan object dari parentnya (yaitu Employee)
+        }
+      }
+
+      const ripunn = new Employee();
+      ripunn.name = "ripunn";
+      ripunn.sayHello("kak");
+      console.info(ripunn);
+
+      const rivan = new Manager();
+      rivan.name = "rivan";
+      rivan.sayHello("dek");
+      console.info(rivan);
+    </script>
+  </body>
+</html>

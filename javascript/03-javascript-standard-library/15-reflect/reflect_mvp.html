@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reflect</title>
+  </head>
+  <body>
+    <a
+      href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Reflect"
+      >Link Dokumentasi</a
+    >
+    <script>
+      const person = {};
+
+      Reflect.set(person, "firstName", "Rivan");
+      Reflect.set(person, "lastName", "Fadlani");
+
+      // akses via object
+      console.info(person);
+
+      // akese via reflect (tidak akses object secara langsung)
+      console.info(Reflect.get(person, "firstName")); // Rivan
+      console.info(Reflect.get(person, "lastName")); // Fadlani
+
+      // ingin cek apakah sebuah property ada atau tidak ada
+      console.info(Reflect.has(person, "firstName")); // true
+      console.info(Reflect.has(person, "middleName")); // false
+      console.info(Reflect.has(person, "lastName")); // true
+    </script>
+  </body>
+</html>

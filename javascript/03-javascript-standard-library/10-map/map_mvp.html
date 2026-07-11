@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Map</title>
+  </head>
+  <body>
+    <a
+      href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map"
+      >Link Dokumentasi</a
+    >
+    <script>
+      const map = new Map();
+
+      // menambahkan data: .set(KEY, VALUE)
+      map.set("Name", "Rivan Fadlani");
+      map.set("Address", "Bogor Indonesia");
+      // map.set("Address", "Bogor"); // bakal timpa key address
+
+      // mengambil data
+      console.info(map);
+      console.info(map.get("Name")); // Rivan Fadlani
+      console.info(map.get("Address")); // Bogor Indonesia
+      console.info(map.get("Hobby")); // undefined
+
+      // print
+      for (const element of map) {
+        console.info(`${element[0]} : ${element[1]}`);
+      }
+
+      // atau, bisa juga coba ini
+
+      // print dengan Destructuring
+      for (const [key, value] of map) {
+        console.info(`${key} : ${value}`);
+      }
+
+      // atau
+
+      // print yang lebih baik
+      map.forEach((value, key) => console.info(`${key} : ${value}`)); // parameter forEach harus dibalik. 'value' dulu baru 'key'
+    </script>
+  </body>
+</html>

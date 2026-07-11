@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ternary Operator</title>
+</head>
+
+<body>
+  <script>
+
+    // ternary operator adalah versi simple dari if-statement
+
+    let currentScore = 80;
+    let highScore; // nantinya, akan dimasukkan string dan variable ke dalam variable ini
+
+    // kalau menggunakan if expression seperti biasa
+    if (currentScore >= 75) {
+      highScore = `This is your high score: ${currentScore}`;
+    } else {
+      highScore = "Try Again!";
+    }
+
+    document.writeln(`<p>${highScore}</p>`);
+
+    // kalau menggunakan ternary operator
+    highScore = currentScore >= 75 ? `This is your high score: ${currentScore}` : "Try Again!";
+    document.writeln(`<p>${highScore}</p>`);
+
+  </script>
+</body>
+
+</html>

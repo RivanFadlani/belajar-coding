@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Getter dan Setter</title>
+  </head>
+  <body>
+    <script>
+      const person = {
+        firstName: "Rivan",
+        lastName: "Fadlani",
+        get fullName() {
+          // getter
+          return `${this.firstName} ${this.lastName}`;
+        },
+        set fullName(value) {
+          // setter
+          const potong = value.split(" "); // memisahkan value dengan spasi
+          // hasil dari split() selalu berbentuk array, makanya cara mengaksesnya harus seperti memanggil array 'potong[0]'
+          this.firstName = potong[0]; // hasil split disimpan ke dalam objet firstName untuk diperbarui
+          this.lastName = potong[1];
+        },
+      };
+
+      console.info(person.fullName); // output: Rivan Fadlani (diambil dari get fullName())
+      person.fullName = "John Doe"; // Memanggil setter (set fullName())
+      console.table(person); // output: John Doe
+    </script>
+  </body>
+</html>

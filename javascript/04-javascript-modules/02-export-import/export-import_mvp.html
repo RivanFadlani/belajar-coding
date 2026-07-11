@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Export Import MOdule</title>
+    <!-- jika menggunakan module, lalu import, maka tag script di tag head tidak dibutuhkan lagi-->
+    <script type="module" src="scripts/library.js"></script>
+  </head>
+  <body>
+    <script type="module">
+      import { sayHello, sayGoodBye } from "./scripts/library.js"; // untuk memanggil kode yang di ekspos dengan kata kunci 'export'
+
+      sayHello("Rivan");
+      sayGoodBye("Fadlani");
+
+      console.info(name); // name tidak menggunakan kata kunci export, maka dia tidak akan bisa ditampilkan
+    </script>
+  </body>
+</html>

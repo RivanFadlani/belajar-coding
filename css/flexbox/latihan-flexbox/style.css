@@ -1,0 +1,147 @@
+html,
+body,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.5;
+  background-color: aliceblue;
+}
+
+/* latihan 1 start */
+.first-container {
+  max-width: 800px;
+  margin: 30px auto;
+  padding: 30px 20px;
+  box-sizing: border-box;
+  background-color: white;
+  border-radius: 15px;
+  display: flex;
+}
+
+.main-column {
+  flex: 2;
+  order: 2;
+}
+
+.first-sidebar {
+  flex: 1;
+  order: 1;
+}
+
+.second-sidebar {
+  flex: 1;
+  order: 3;
+}
+
+/* latihan 1 end */
+
+/* latihan 2 start */
+.second-container {
+  max-width: 800px;
+  margin: 30px auto;
+  flex-wrap: wrap;
+  /* background-color: white; */
+}
+
+.service {
+  padding: 10px;
+  margin: 10px 5px;
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+
+.first {
+  background-color: crimson;
+}
+
+.second {
+  background-color: greenyellow;
+}
+
+.third {
+  background-color: royalblue;
+}
+
+/* latihan 2 end */
+
+/* latihan 3 start */
+.third-container {
+  max-width: 800px;
+  display: flex;
+  margin: 30px auto;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  box-sizing: border-box;
+}
+
+.third-container img {
+  width: 48%;
+  margin: 10px 2px;
+  border-radius: 10px;
+}
+
+/* latihan 3 end */
+
+/* latihan 4 start */
+.fourth-container {
+  max-width: 800px;
+  margin: 30px auto;
+  padding: 10px;
+}
+
+.card {
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #fff;
+  overflow: hidden;
+  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.3);
+}
+
+.card .header {
+  background-color: #999;
+  height: 160px;
+}
+
+.card .content {
+  padding: 16px;
+  text-align: center;
+}
+
+.card .content button {
+  border: none;
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  background-color: crimson;
+  color: white;
+  font-weight: bold;
+  border-radius: 6px;
+}
+
+/* latihan 4 end */
+
+/* responsive */
+@media(min-width: 800px) {
+  .second-container {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .service {
+    width: 30%;
+  }
+
+  .fourth-container {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .card {
+    width: 30%;
+  }
+}

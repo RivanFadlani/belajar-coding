@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Promise Method</title>
+  </head>
+  <body>
+    <table>
+      <tbody>
+        <tr>
+          <td>ID:</td>
+          <td id="id"></td>
+        </tr>
+        <tr>
+          <td>Name:</td>
+          <td id="name"></td>
+        </tr>
+        <tr>
+          <td>Price:</td>
+          <td id="price"></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <script>
+      // 1. PEMBUATAN PROMISE (PRODUCENT)
+      // Promise adalah objek yang merepresentasikan keberhasilan (resolve) atau kegagalan (reject) dari operasi asynchronous.
+      function getProduct() {
+        return new Promise(function (resolve, reject) {
+          const ajax = new XMLHttpRequest();
+          ajax.open("GET", "api/product.json");
+          ajax.addEventListener("load", function () {
+            if (ajax.status === 200) {
+              // 'resolve' dipanggil ketika operasi sukses.
+              // Nilai yang dimasukkan ke dalam resolve() akan diteruskan ke method .then()
+              resolve(ajax.responseText);
+            } else {
+              // 'reject' dipanggil ketika terjadi error/kegagalan.
+              // Nilai yang dimasukkan ke dalam reject() akan diteruskan ke method .catch()
+              reject(`Error Get Product With Response: ${ajax.responseText}`);
+            }
+          });
+          ajax.send();
+        });
+      }
+
+      // 2. KONSUMSI PROMISE (CONSUMER)
+      getProduct()
+        // '.then()' digunakan untuk menangani hasil sukses (ketika resolve() dipanggil).
+        // Parameter 'response' di sini adalah data yang dikirim lewat resolve() di atas.
+        .then(function (response) {
+          // Setiap data yang di-return dari .then() akan diteruskan ke .then() berikutnya dalam chain (berantai).
+          return JSON.parse(response);
+        })
+        // .then() berantai menerima input dari return value .then() sebelumnya.
+        // Hasil parsing dari .then pertama akan diterima oleh parameter 'json' di .then ke-dua
+        .then(function (json) {
+          document.getElementById("id").textContent = json.id;
+          document.getElementById("name").textContent = json.name;
+          document.getElementById("price").textContent = json.price;
+        })
+        // '.catch()' digunakan untuk menangani error/kegagalan (ketika reject() dipanggil atau terjadi error di dalam .then).
+        .catch(function (error) {
+          console.error("Terjadi kesalahan:", error);
+        })
+        // '.finally()' akan selalu dijalankan di akhir, baik ketika promise sukses (resolve) maupun gagal (reject).
+        // Biasanya digunakan untuk proses bersih-bersih (seperti mematikan loading state).
+        .finally(function () {
+          console.log("Proses Promise selesai dijalankan.");
+        });
+    </script>
+  </body>
+</html>

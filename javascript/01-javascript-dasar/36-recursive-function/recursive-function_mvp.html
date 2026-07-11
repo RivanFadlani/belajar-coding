@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Recursive Function</title>
+  </head>
+
+  <body>
+    <script>
+      // factorial dalam for loop
+      function factorial(value) {
+        let result = 1;
+        for (let i = 1; i <= value; i++) {
+          // kalau variable i kurang dari sama dengan value, jumlahkan dengan angka 1 ke dalam variable i
+          // kalau i sudah kuran dari sama dengan value, maka lakukan blok kode di bawah ini
+          result *= i; // result = result * i
+        }
+        return result;
+      }
+
+      let hasil = factorial(5);
+      console.info(hasil);
+      console.info(1 * 2 * 3 * 4 * 5); // sama - sama hailnya 120
+
+      // factorial dalam recursive function
+      function factorialRecursive(value) {
+        // Base Case: Berhenti jika value sudah 1 atau 0
+        if (value <= 1) {
+          return 1;
+        } else {
+          // Kalikan value saat ini dengan hasil pemanggilan fungsi berikutnya,
+          // sambil mengirim nilai baru (value - 1) untuk divalidasi ulang di if expression.
+          return value * factorialRecursive(value - 1);
+        }
+      }
+
+      console.info(factorialRecursive(3));
+
+      /** By GeminiAI
+       * Alur Eksekusi (Call Stack):
+       * factorialRecursive(3)
+       * 3 * factorialRecursive(2)
+       * 3 * (2 * factorialRecursive(1))
+       * 3 * (2 * 1) = 6
+       */
+    </script>
+  </body>
+</html>

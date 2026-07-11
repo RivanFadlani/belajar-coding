@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RegExp</title>
+  </head>
+  <body>
+    <script>
+      // penggunaan new RegExp
+      // gunakan ini bila kata-nya/polanya didapat dari variable, input dari user, atau hasil gabungan dari string lain
+
+      const teks = "Halo Rivan, Selamat datang!";
+
+      const inputUser = "Rivan";
+      const regexDinamis = new RegExp(inputUser, "i");
+
+      console.info(regexDinamis.exec(teks)); // Rivan
+    </script>
+  </body>
+</html>

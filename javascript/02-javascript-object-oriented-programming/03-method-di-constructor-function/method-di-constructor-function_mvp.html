@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Method di Constructor Function</title>
+  </head>
+  <body>
+    <script>
+      function Person() {
+        this.nickName = "";
+        this.sayHello = function (name) {
+          console.info(`hi, ${name}! my name is ${this.nickName}`);
+        };
+      }
+
+      const ripunn = new Person();
+      ripunn.nickName = "ripunn";
+      ripunn.sayHello("miyazaki");
+
+      const eko = new Person();
+      eko.nickName = "eko";
+      ripunn.sayHello("hayao");
+    </script>
+  </body>
+</html>

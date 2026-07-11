@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Class Error</title>
+  </head>
+  <body>
+    <script>
+      // ==========================================
+      // TAHAP PERSIAPAN (Didaftarkan ke memori)
+      // ==========================================
+      class ValidationError extends Error {
+        constructor(message, field) {
+          super(message);
+          this.field = field;
+        }
+      }
+
+      class MathUtil {
+        static sum(...numbers) {
+          // [3] Program mengecek apakah parameter kosong. Karena kosong, kondisi ini TRUE.
+          if (numbers.length === 0) {
+            // [4] Membuat objek ValidationError dan MELEMPARNYA keluar.
+            // Fungsi sum() LANGSUNG BERHENTI di sini.
+            throw new ValidationError(
+              "Numbers harus lebih dari sama dengan 0",
+              "numbers",
+            );
+          }
+
+          // Jalur ini TIDAK DIJALANKAN karena fungsi sudah terlanjur berhenti di atas.
+          let total = 0;
+          for (const number of numbers) {
+            total += number;
+          }
+          return total;
+        }
+      }
+
+      // ==========================================
+      // TAHAP EKSEKUSI UTAMA (FLOW BERJALAN)
+      // ==========================================
+
+      // [1] Program masuk ke dalam blok try
+      try {
+        // [2] Memanggil fungsi MathUtil.sum() tanpa argumen. Program melompat ke fungsi sum().
+        console.info(MathUtil.sum());
+
+        // Jalur ini DILEWATI/DIBATALKAN karena baris di atasnya menghasilkan error.
+        console.info("rivan");
+      } catch (err) {
+        // [5] Error ditangkap di sini! Objek ValidationError tadi sekarang disimpan di parameter 'err'.
+
+        // [6] Mengecek apakah 'err' adalah instance dari ValidationError. Hasilnya: TRUE.
+        if (err instanceof ValidationError) {
+          // [7] Mencetak pesan error spesifik dari class ValidationError ke konsol.
+          console.error(
+            `terjadi error di field ${err.field}, dengan message ${err.message}`,
+          );
+        } else {
+          // Jalur ini dilewati karena kondisi 'if' di atas sudah terpenuhi.
+          console.error(`terjadi error: ${err.message}`);
+        }
+      } finally {
+        // [8] Blok ini WAJIB dijalankan setelah urusan try/catch selesai.
+        console.info(`program selesai`);
+      }
+
+      // [9] Program keluar dari struktur try-catch-finally dan melanjutkan baris terakhir.
+      console.info("fadlani");
+    </script>
+  </body>
+</html>

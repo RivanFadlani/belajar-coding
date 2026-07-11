@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Handling Error In Proxy</title>
+  </head>
+  <body>
+    <script>
+      const target = {};
+
+      const handler = {
+        get: function (target, property) {
+          return target[property];
+        },
+        set: function (target, property, value) {
+          if (value === null) {
+            throw new Error(`value tidak boleh null`);
+          } else {
+            target[property] = value;
+          }
+        },
+      };
+
+      try {
+        const proxy = new Proxy(target, handler);
+        proxy.firstName = null;
+        console.info("sukses");
+      } catch (err) {
+        console.error(`Terjadi error: ${err.message}`);
+      }
+
+      const proxy = new Proxy(target, handler);
+      // proxy.firstName = null;
+      proxy.lastName = "Fadlani";
+
+      console.info(proxy.firstName);
+      console.info(proxy.lastName);
+      console.info(target);
+    </script>
+  </body>
+</html>

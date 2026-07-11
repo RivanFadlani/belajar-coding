@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Array</title>
+  </head>
+  <body>
+    <a
+      href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array"
+      >Link Dokumentasi</a
+    >
+    <script>
+      {
+        // foreach start
+        const name = ["Rivan", "Fadlani", "Ripunn"];
+
+        name.forEach(function (index, value) {
+          console.info(`${index} : ${value}`);
+        });
+
+        name.forEach((index, value) => {
+          console.info(`${index} : ${value}`);
+        });
+
+        name.forEach((value) => {
+          console.info(`${value}`);
+        });
+        // foreach end
+      }
+
+      {
+        // array queue start
+        // First In First Out (FIFO)
+        const queue = [];
+
+        // menambahkan index ke antrian paling belakang
+        queue.push("Eko");
+        queue.push("Kurniawan");
+        queue.push("Khannedy");
+
+        // memanggil dari antrian paling depan, lalu menghapus indexnya dari array
+        console.info(queue.shift()); // Eko
+        console.info(queue.shift()); // kurniawan
+        console.info(queue.shift()); // Khannedy
+        console.info(queue.shift()); // undefined
+        // array queue end
+      }
+
+      {
+        // array stack start
+        // Last In First Out (LIFO)
+        const stack = [];
+
+        // menambahkan index ke antrian paling belakang
+        stack.push("Eko");
+        stack.push("Kurniawan");
+        stack.push("Khannedy");
+
+        // memanggil dari antrian paling depan, lalu menghapus indexnya dari array
+        console.info(stack.shift()); // Eko
+        console.info(stack.shift()); // kurniawan
+        console.info(stack.shift()); // Khannedy
+        console.info(stack.shift()); // undefined
+        // array stack end
+      }
+
+      {
+        // array search start
+        const source = [1, 2, 3, 4, 5, 1, 2, 3, 4, 5];
+
+        console.info(source.find((value) => value > 3)); // cari value yang lebih dari 3 = 4 (diambil dari yang paling pertama)
+        console.info(source.findIndex((value) => value > 3)); // cari value yang lebih dari 3 lalu kembalikan dalam bentuk index = value 4 -> indeks ke-3
+        console.info(source.includes(7)); // apakah ada angka 7 = false
+        console.info(source.indexOf(5)); // index angka 5 ada di index berapa = 4
+        console.info(source.lastIndexOf(5)); // index angka 5 dari yang terakhir di index berapa = 9
+        // array search end
+      }
+
+      {
+        // array filter start
+        const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+        const ganjil = numbers.filter((value) => value % 2 === 1); // cetak angka ganjil
+        const genap = numbers.filter((value) => value % 2 === 0); // cetak angka genap
+
+        console.info(numbers);
+        console.info(ganjil);
+        console.info(genap);
+        // array filter end
+      }
+
+      {
+        // array transform start
+        const names = ["Eko", "Kurniawan", "Khannedy"];
+        const namesUpper = names.map((value) => value.toUpperCase()); // mengambil value array, lalu ubah semua value menjadi uppercase
+        console.info(namesUpper);
+
+        const nameReduce = names.reduce(
+          (before, value) => before + " " + value,
+        );
+        // Eko + " " + Kurniawan = Eko Kurniawan
+        // Eko Kurniawan + " " + Khannedy = Eko Kurniawan Khannedy
+        console.info(nameReduce);
+
+        const nameReduceRight = names.reduceRight(
+          (before, value) => before + " " + value,
+        ); // urutan kebalikan dari reduce()
+        console.info(nameReduceRight);
+
+        const numbers = [1, 2, 3, 4]; // 10
+        // 1 + 2 = 3
+        // 3 + 3 = 6
+        // 6 + 4 = 10
+        const numbersReduce = numbers.reduce((before, value) => before + value);
+        console.info(numbersReduce);
+        // array transform end
+      }
+    </script>
+  </body>
+</html>

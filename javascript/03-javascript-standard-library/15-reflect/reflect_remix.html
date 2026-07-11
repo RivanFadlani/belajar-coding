@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reflect with Proxy</title>
+  </head>
+  <body>
+    <script>
+      const user = {
+        username: "leon_k",
+        age: 25,
+      };
+
+      const userHandler = {
+        get(target, property) {
+          console.log(`[LOG]: Mengakses properti "${property}"`);
+          return Reflect.get(target, property);
+        },
+
+        set(target, property, value) {
+          console.log(`[LOG]: Mengubah "${property}" menjadi "${value}"`);
+
+          // Contoh Validasi
+          if (property === "age" && value > 150) {
+            console.error("Umur tidak valid!");
+            return false; // Gagal mengubah
+          }
+
+          return Reflect.set(target, property, value); // Mengembalikan true/false otomatis
+        },
+      };
+
+      const userProxy = new Proxy(user, userHandler);
+      Reflect.set(user, "role", "attacker");
+      console.info(Reflect.get(user, "username"));
+
+      console.info(user);
+    </script>
+  </body>
+</html>

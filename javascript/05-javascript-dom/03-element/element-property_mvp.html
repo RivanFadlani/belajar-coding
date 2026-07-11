@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Element Property</title>
+  </head>
+  <body>
+    <!-- karena Element adalah turunan dari Node, semua property Node pun bisa digunakan di Element -->
+    <a
+      href="https://developer.mozilla.org/en-US/docs/Web/API/Element#properties"
+      >Link Dokumentasi</a
+    >
+    <div id="aidi" class="kelas">
+      <h1 id="title" class="title">Ini adalah judul</h1>
+      <p id="description" class="description">Ini adalah deskripsi</p>
+    </div>
+    <script>
+      const content = document.getElementById("aidi");
+      console.info(content.id); // mendapatkan nama id dari sebuah element
+      console.info(content.className); // mendapatkan nama class dari sebuah element
+      console.info(content.tagName); // mendapatkan nama tag dari sebuah element
+    </script>
+  </body>
+</html>

@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Static Field</title>
+  </head>
+  <body>
+    <script>
+      class Configuration {
+        static name = "Belajar OOP Javascript"; // tidak menempel pada instance, melainkan langsung menempel pada class
+        static version = 1.0;
+        static author = "Eko Kurniawan Khannedy";
+      }
+
+      const config = new Configuration();
+      console.info(config);
+
+      console.info(Configuration.name); // cara akses field yang static
+      console.info(Configuration.version);
+      console.info(Configuration.author);
+
+      Configuration.author = "Rivan Fadlani"; // bisa memanipulasi instance juga
+      console.info(Configuration.author);
+    </script>
+  </body>
+</html>

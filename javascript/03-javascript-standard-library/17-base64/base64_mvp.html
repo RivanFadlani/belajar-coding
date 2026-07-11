@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Base64</title>
+  </head>
+  <body>
+    <script>
+      const original = "Eko&Kurniawan=Khannedy";
+      console.info(original);
+
+      const encode = btoa(original);
+      console.info(encode);
+
+      const decode = atob(encode);
+      console.info(decode);
+    </script>
+  </body>
+</html>

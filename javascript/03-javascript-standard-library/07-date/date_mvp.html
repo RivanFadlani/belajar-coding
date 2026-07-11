@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Date</title>
+  </head>
+  <body>
+    <a
+      href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date"
+      >Link Dokementasi</a
+    >
+    <script>
+      {
+        // === Create Date
+        const date1 = new Date(); // tanggal per hari ini (diupdate)
+        console.info(date1);
+
+        // index bulan di mulai dari angka 0 = januari
+        const date2 = new Date(2007, 09, 29); // Year, Month, Date
+        console.info(date2);
+
+        const date3 = new Date(2020, 10, 10, 16, 15, 09, 123); // Y,M,D Hour, Minute, Second, Mili Second
+        console.info(date3);
+
+        // menggunakan UNIX time dari website current millis
+        const date4 = new Date(1779680224538); // mengambil waktu saat ini tapi tidak diupdate
+        console.info(date4);
+      }
+
+      {
+        // === Epoch & Unix Timestamp
+        const date1 = new Date(); // tanggal per hari ini (diupdate)
+        console.info(date1.getTime());
+
+        // index bulan di mulai dari angka 0 = januari
+        const date2 = new Date(2007, 09, 29); // Year, Month, Date
+        console.info(date2.getTime());
+
+        const date3 = new Date(2020, 10, 10, 16, 15, 09, 123); // Y,M,D Hour, Minute, Second, Mili Second
+        console.info(date3.getTime());
+
+        // menggunakan UNIX time dari website current millis
+        const date4 = new Date(1779680224538);
+        console.info(date4.getTime());
+
+        console.info(Date.now()); // Epoch tanggal per hari ini (diupdate)
+      }
+
+      {
+        // === Date Parsing
+        // Membuat date dari string
+        // YY = Year
+        // MM = Month
+        // DD = Day/Date
+        // T = Pemisah tanggal dan waktu
+        // HH = Hour
+        // mm = minute
+        // ss = second
+        // sss = mili second
+        // Z = time zone
+        // YYMMDDTHH:mm:ss:sssZ
+        // Hasil parsing adalah unix timestamp
+
+        const time = Date.parse("2020-10-10T08:45:45.123+07:00");
+        console.info(time);
+
+        const date = new Date(time);
+        console.info(date);
+      }
+
+      {
+        // getter dan setter
+        const date = new Date();
+
+        console.info(date.getFullYear());
+        console.info(date.getMonth());
+        console.info(date.getDate());
+        console.info(date.getHours());
+        console.info(date.getSeconds());
+        console.info(date.getMilliseconds());
+        console.info(date.getTimezoneOffset());
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Property di Constructor Function</title>
+  </head>
+  <body>
+    <script>
+      function Person() {
+        this.firstName = ""; // direkomendasikan untuk dideklarasikan
+        this.lastName = "";
+      }
+
+      const eko = new Person();
+      eko.firstName = "eko"; // hanya akan merubah isi value di object ini saja
+      eko.lastName = "khannedy";
+
+      const ripunn = new Person();
+      // kalau tidak deklarasi value, maka nama variable akan tetap terdeklarasi. karena, sudah ditentukan oleh Constructor Function di atas
+
+      console.log(eko);
+      console.log(ripunn);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fetch API</title>
+  </head>
+  <body>
+    <form>
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" />
+      <br />
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" />
+      <br />
+      <input type="button" id="login" value="Login" />
+    </form>
+    <h1 id="response"></h1>
+
+    <script>
+      function doLogin() {
+        // Membuat konfigurasi request baru menggunakan object Request built-in Web API
+        const request = new Request(
+          "https://ripun.free.beeceptor.com/api/user",
+          {
+            method: "POST", // Menentukan HTTP method untuk mengirim data baru
+            headers: {
+              "Content-Type": "application/json", // Memberitahu server bahwa payload yang dikirim berupa string JSON
+              Accept: "application/json", // Memberitahu server bahwa client mengharapkan balasan berbentuk JSON
+            },
+            // Mengubah JavaScript Object (data input) menjadi string JSON agar bisa ditransmisikan lewat jaringan
+            body: JSON.stringify({
+              username: document.getElementById("username").value,
+              password: document.getElementById("password").value,
+            }),
+          },
+        );
+
+        // Mengirim request menggunakan fetch API.
+        // Fungsi fetch() secara otomatis mengembalikan sebuah object Promise yang membungkus Response.
+        // Promise<Response> = objek yang merepresentasikan hasil dari operasi asinkron (misalnya pemanggilan API/jaringan) yang nantinya akan memberikan nilai balik berupa objek Response
+        const response = fetch(request);
+
+        response
+          // Mengubah data text/string JSON yang diterima dari body Response menjadi JavaScript Object secara asynchronous
+          .then((response) => response.json())
+          // Menerima hasil konversi object JSON, lalu memanipulasi DOM untuk menampilkan properti 'success'
+          .then(function (json) {
+            document.getElementById("response").textContent = json.success;
+          })
+          // Menangkap error jika terjadi kegagalan koneksi/jaringan (bukan karena HTTP status error)
+          .catch(function (error) {
+            document.getElementById("response").textContent = error;
+          });
+      }
+
+      // Mendaftarkan event listener pada elemen tombol agar menjalankan fungsi doLogin saat di-klik
+      document.getElementById("login").addEventListener("click", doLogin);
+    </script>
+  </body>
+</html>

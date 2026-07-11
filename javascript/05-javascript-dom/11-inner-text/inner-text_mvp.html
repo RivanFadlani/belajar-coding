@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inner Text</title>
+  </head>
+  <body>
+    <p id="content">
+      <script>
+        console.log("Rivan Fadlani");
+      </script>
+      <b>Rivan</b> Fadlani a.k.a <i>Ripunn</i>
+    </p>
+    <script>
+      const content = document.getElementById("content");
+      console.info(content.textContent); // dia akan menganggap tag sebagai text, tapi tagnya "</>" tidak akan ditampikan
+      console.info(`innerText: ${content.innerText}`); // dia hanya mengambil pure text
+    </script>
+  </body>
+</html>

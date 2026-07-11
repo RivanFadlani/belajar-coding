@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dynamic Module Loading</title>
+  </head>
+  <body>
+    <input type="text" id="name" />
+    <input type="button" value="Say" id="sayButton" />
+    <script type="module">
+      // kalau kita import mudule di awal, mau tidak mau module itu akan langsung di load
+      // import { alertHello } from "./scripts/alert.js";
+
+      // ini menggunakan konsep Promis Async dan DOM
+
+      // DOM
+      document.getElementById("sayButton").onclick = function () {
+        const name = document.getElementById("name").value;
+
+        // Promise (.then): Karena import() mengembalikan Promise, ketika filenya berhasil di-download secara asynchronous, .then() akan dieksekusi, lalu memanggil fungsi alertHello dari objek module yang dikembalikan.
+        import("./scripts/alert.js").then(function (module) {
+          module.alertHello(name);
+        });
+      };
+    </script>
+  </body>
+</html>

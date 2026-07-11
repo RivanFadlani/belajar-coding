@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rest Parameter</title>
+</head>
+
+<body>
+  <script>
+
+    function sum(students, ...scores) { // selama rest parameter diletakan di akhir maka tidak akan terjadi apa-apa
+      let total = 0;
+      for (score of scores) {
+        total += score; // kalo yang dipanggil adalah 'scores', hasilnya rest parameter akan menampilkan seluruh index array, bukannya eksekusi untuk menjumlahkan
+        // total = total + score
+      }
+      document.writeln(`<p>${students}'s score is ${total}</p>`);
+    }
+
+    sum("ripunn", 20, 10, 30, 40); // "ripunn" di anggap sebagai string nya 'students', dan sisanya akan dianggap sebagai '...scores' yang dikonversi menjadi array
+
+    // kalau ingin mengambil array, harus menggunakan spread operator (...)
+    const arr = [10, 20, 30, 50];
+    sum("kacchan", arr); // kalau ini, dia akan menampilkan isi dari array, bukan hasil penjumlahan dari perulangan
+    sum("kacchan", ...arr); // ini adalah metode yang benar, jika ingin mengambil array
+    // spread operator ini gunanya mengambil semua elemen di dalam iritable (seperti array) dan menyebarkannya menjadi argumen terpisah (ndividual arguments)
+    sum("kacchan", ...[20, 20, 10, 30]);
+
+  </script>
+</body>
+
+</html>

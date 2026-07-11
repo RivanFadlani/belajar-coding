@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ajax State</title>
+  </head>
+  <body>
+    <h1 id="header"></h1>
+    <script>
+      function displayResponse(json) {
+        const header = document.getElementById("header");
+        header.textContent = json.ripunn;
+      }
+
+      const ajax = new XMLHttpRequest();
+      ajax.open("GET", "api/hello.json");
+      // === ajax state start
+      // 0 = UNSENT : Client has been created. open() not called yet.
+      // 1 = OPENED : open() has been called
+      // 2 = HEADERS_RECEIVED : send() has been called, and headears and status are available
+      // 3 = LOADING : Downloading; responseText hold partial data
+      // 4 = DONE : The operation is completed
+      ajax.addEventListener("readystatechange", function () {
+        console.info(`Ready State Change: ${ajax.readyState}`);
+      });
+      // === ajax state end
+      ajax.addEventListener("load", function () {
+        if (ajax.status === 200) {
+          const json = JSON.parse(ajax.responseText);
+          displayResponse(json);
+        } else {
+          displayResponse({
+            ripunn: `Terjadi kesalahan dengan status ${ajax.status}`,
+          });
+        }
+      });
+      ajax.send();
+    </script>
+  </body>
+</html>

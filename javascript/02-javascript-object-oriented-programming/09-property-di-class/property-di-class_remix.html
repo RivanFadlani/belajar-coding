@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Remix - Constructor di Class</title>
+  </head>
+  <body>
+    <script>
+      class Person {
+        constructor(firstName, lastName) {
+          this.firstName = firstName;
+          this.lastName = lastName;
+          this.sayHello = function (name) {
+            console.info(`Hi, ${name}! my name is ${this.firstName}`);
+          };
+        }
+      }
+
+      const ripunn = new Person("rivan", "fadlani");
+      ripunn.sayHello("joshh");
+    </script>
+  </body>
+</html>

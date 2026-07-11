@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Remix - Closure</title>
+  </head>
+  <body>
+    <script>
+      function beriSapa(nama) {
+        const salam = "Assalamu'alaikum";
+        function reminder(kalimat) {
+          return `${salam}, ${nama}! ${kalimat}`;
+        }
+        return reminder;
+      }
+
+      const surat = beriSapa("ripunn");
+      console.info(surat("Jangan lupa shalat yaa!"));
+    </script>
+  </body>
+</html>

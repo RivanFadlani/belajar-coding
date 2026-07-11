@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ajax Send File</title>
+  </head>
+  <body>
+    <h1>Register</h1>
+    <form>
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" />
+      <br />
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" />
+      <br />
+      <label for="profile">Profile:</label>
+      <input type="file" id="profile" name="profile" />
+      <br />
+      <input type="button" id="register" value="Register" />
+    </form>
+    <h1 id="response"></h1>
+
+    <script>
+      function doRegister() {
+        const ajax = new XMLHttpRequest();
+        ajax.open("POST", "https://ripun.free.beeceptor.com");
+        ajax.addEventListener("load", function () {
+          const response = document.getElementById("response");
+          response.textContent = ajax.responseText;
+        });
+
+        // Content-type tidak perlu dideklarasi, karena sudah otomatis dibuat oleh objek FormData()
+
+        const form = new FormData();
+        form.append("username", document.getElementById("username").value);
+        form.append("name", document.getElementById("name").value);
+
+        const files = document.getElementById("profile").files; // .files mengembalikan fileList (kumpulan file)
+        // makanya kita perlu item(0) untuk ambil file ke-1 -> index ke-0
+        const firstFiles = files.item(0);
+
+        form.append("profile", firstFiles);
+
+        ajax.send(form);
+      }
+
+      document.getElementById("register").addEventListener("click", doRegister);
+    </script>
+  </body>
+</html>

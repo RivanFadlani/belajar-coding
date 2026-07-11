@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Node List Static</title>
+  </head>
+  <body>
+    <ul id="menu-satu">
+      <li id="first">First</li>
+      <li id="second">Second</li>
+      <li id="third">Third</li>
+    </ul>
+
+    <ul id="menu-dua">
+      <li id="first-name">Eko</li>
+      <li id="middle-name">Kurniawan</li>
+      <li id="last-name">Khannedy</li>
+    </ul>
+
+    <script>
+      let list = document.querySelectorAll("li"); // ada 6 element li di sini
+
+      const menuSatu = document.getElementById("menu-satu");
+      menuSatu.appendChild(document.createElement("li"));
+      menuSatu.appendChild(document.createElement("li")); // seharusnya ada 8 element li sekarang
+
+      console.info(list); // ternyata, hasilnya masih 6 element
+      // itu karena querySelectorAll() bukanlah nodelist live
+
+      // kecuali jika kita query ulang
+      list = document.querySelectorAll("li"); // maka nodelist static akan memperbarui list
+      console.info(list);
+    </script>
+  </body>
+</html>

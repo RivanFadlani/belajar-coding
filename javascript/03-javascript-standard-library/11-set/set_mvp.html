@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Set</title>
+  </head>
+  <body>
+    <a
+      href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set"
+      >Link Dokumentasi</a
+    >
+
+    <script>
+      const set = new Set();
+
+      set.add("Rivan");
+      set.add("Rivan"); // tidak akan tercetak 2 kali. (set tidak menerima duplikasi data)
+      set.add("Fadlani");
+      set.add("ganteng");
+
+      console.info(set);
+
+      set.forEach((set) => console.info(set));
+    </script>
+    <script></script>
+  </body>
+</html>

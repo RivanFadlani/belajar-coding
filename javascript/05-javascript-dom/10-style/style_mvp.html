@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Style</title>
+  </head>
+  <body>
+    <input type="button" value="blue" />
+    <input type="button" value="yellow" />
+    <input type="button" value="green" />
+    <div
+      id="canvas"
+      style="width: 500px; height: 500px; background-color: gray"
+    ></div>
+    <script>
+      const canvas = document.getElementById("canvas");
+      const btns = document.querySelectorAll("input");
+
+      for (const btn of btns) {
+        btn.addEventListener("click", function () {
+          canvas.style.backgroundColor = btn.getAttribute("value");
+        });
+      }
+      console.info(canvas.getAttribute("id"));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Error Handling</title>
+  </head>
+  <body>
+    <script>
+      class MathUtil {
+        static sum(...numbers) {
+          if (numbers.length === 0) {
+            throw new Error(`Numbers harus lebih dari sama dengan 0`);
+          }
+
+          let total = 0;
+          for (const number of numbers) {
+            total += number;
+          }
+          return total;
+        }
+      }
+
+      // try catch akan melanjutkan lagi blok kode walaupun ada error, setelah blok try catch selesai dijalankan
+      try {
+        console.info(MathUtil.sum()); // mencoba tidak mengisi argumen sum() yang akan dikirim ke static method sum()
+        console.info("rivan"); // kalau error tidak akan muncul
+      } catch (error) {
+        // akan dieksekusi ketika ada error saja
+        console.info(`Terjadi Error: ${error.message}`); // message adalah property bawaan dari class error
+      } finally {
+        console.info(`Kode selesai dieksekusi`); // akan muncul tidak peduli error atau tidak
+      }
+
+      console.info("fadlani"); // akan tetap muncul karena try catch
+
+      // try finally
+      class Counter {
+        constructor() {
+          this.value = 1;
+        }
+
+        // kalau mau increment keburu di return duluan, jadi kita malah tidak bisa increment
+        // lanjut() {
+        //   return this.value
+        //   this.value++
+        // }
+
+        // pakai try finally
+        next() {
+          try {
+            return this.value;
+          } finally {
+            this.value++;
+          }
+        }
+      }
+
+      const ripunn = new Counter();
+      console.info(ripunn.next());
+
+      console.info(ripunn.next());
+      console.info(ripunn.next());
+      console.info(ripunn.next());
+    </script>
+  </body>
+</html>

@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Receive Ajax</title>
+  </head>
+  <body>
+    <h1 id="header"></h1>
+    <script>
+      const ajax = new XMLHttpRequest();
+      ajax.open("GET", "api/hello.json");
+      // untuk mendapatkan informasi ajax, kita bisa menggunakan ajax callback
+      // ajax callback bisa ditambahkan pada event "load"
+      ajax.addEventListener("load", function () {
+        // 1. ajax.responseText berisi string mentah dari server, contohnya: '{"ripunn": "Halo!"}'
+        // 2. JSON.parse() mengubah string mentah tersebut menjadi objek JavaScript nyata: { ripunn: "Halo!" }
+        const json = JSON.parse(ajax.responseText);
+
+        // 3. Mengambil elemen HTML <h1> dengan id="header"
+        const header = document.getElementById("header");
+
+        // 4. Sekarang kita bisa mengakses property .ripunn menggunakan dot notation
+        //    karena variabel `json` sudah resmi menjadi Object, bukan string lagi.
+        header.textContent = json.ripunn;
+      });
+      ajax.send();
+    </script>
+  </body>
+</html>

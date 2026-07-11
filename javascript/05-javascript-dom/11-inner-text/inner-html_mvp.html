@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inner HTML</title>
+  </head>
+  <body>
+    <div id="content"></div>
+    <script>
+      const content = document.getElementById("content");
+      // content.textContent =
+      // "<h1>hi, ripunn</h1><p>ayok kita belajar javascript</p>";
+      // content.innerText =
+      // "<h1>hi, ripunn</h1><p>ayok kita belajar javascript</p>";
+      content.innerHTML =
+        "<h1>hi, ripunn</h1><p>ayok kita belajar javascript</p>"; // innerHTML akan langsung menampilkan tag html di web ke bentuk aslinya
+    </script>
+  </body>
+</html>

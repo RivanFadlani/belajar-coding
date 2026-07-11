@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For Of</title>
+</head>
+
+<body>
+  <script>
+
+    // berbeda dengan for in, for of bisa digunakan untuk menampilkan value dari index secara langsung.
+    // tapi, for of ini tidak bisa digunakan untuk object, karena dia bukan iritable
+    // yang bisa itu array dan string biasanya
+    const fruits = ["banana", "orange", "watermelon"];
+    for (const ripunnFruits of fruits) {
+      document.writeln(`<p>${ripunnFruits}</p>`);
+    }
+
+  </script>
+</body>
+
+</html>

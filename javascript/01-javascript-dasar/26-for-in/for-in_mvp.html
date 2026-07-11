@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For In</title>
+</head>
+
+<body>
+  <script>
+
+    // Object
+    const myName = {
+      firstName: "Rivan",
+      lastName: "Fadlani"
+    }
+
+    for (const apayaa in myName) { // apayaa adalah variable sementara yang akan menyimpan nama property/key (firstName, lastName)
+      document.writeln(`<p>${apayaa} : ${myName[apayaa]}</p>`);
+      // ${apayaa} akan menampilkan property/key
+      // ${myName[apayaa]} akan menampilkan value dari property. menggunakan [] karena kita butuh nama property dari variable 'apayaa'
+    } // jadi, variable apayaa menyimpan nama property dari object myName. dan ketika nanti variable apayaa dipanggil, maka dia akan menampilkan nama property dari object myName
+
+    // Array (tidak disarankan. lebih baik menggunakan for of)
+    const buah = ["apel", "mangga", "semangka"];
+
+    for (const apadong in buah) {
+      document.writeln(`<p>${apadong} : ${buah[apadong]}</p>`);
+    }
+
+  </script>
+</body>
+
+</html>

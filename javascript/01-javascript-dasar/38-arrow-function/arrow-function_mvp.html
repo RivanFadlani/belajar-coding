@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Arrow Function</title>
+  </head>
+  <body>
+    <script>
+      // arrow function multi line block
+      const sayHello = (name) => {
+        const say = `Hello, ${name}!`;
+        console.log(say);
+      };
+
+      sayHello("Ripunn");
+
+      // arrow function one line block
+      // kalau isi block hanya ada satu baris, tidak perlu kurung kurawal
+      // dan, kalau parameter hanya ada satu, tidak perlu menggunakan kurung
+      const bilangHalo = (nama) => console.info(`Assalamu'alaikum, ${nama}!`);
+
+      bilangHalo("Ripunn");
+
+      // === arrow function return value
+      // kalau multi line block
+      function sum(first, second) {
+        return first + second;
+      }
+
+      console.info(sum(10, 10));
+
+      // kalau one line block
+      const hitung = (pertama, kedua) => pertama + kedua;
+
+      console.info(hitung(20, 20));
+
+      // === arrow function sebagai parameter
+      function giveMeName(callback) {
+        callback("Ripunn");
+      }
+
+      // ini kalau menggunakan anonymous functon
+      // giveMeName(function (name) {
+      //   console.info(`Hi, ${name}`);
+      // });
+
+      // kalau menggunakan arrow function
+      // ingat, block harus one line saja!
+      giveMeName((name) => console.info(`HiiHiii, ${name}`));
+    </script>
+  </body>
+</html>

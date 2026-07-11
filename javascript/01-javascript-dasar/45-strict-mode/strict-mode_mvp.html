@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Strict Mode</title>
+  </head>
+  <body>
+    <script>
+      function useStrictMode() {
+        // bisa dideklrasi di awal baris javascript atau bisa juga di awal baris function
+        "use strict"; // akan memberitahu, jika ada code yang sudah deprecated
+        const person = {
+          firstName: "Rivan",
+        };
+
+        // with (person) { // ERROR
+        //   console.info(firstName);
+        // }
+      }
+
+      useStrictMode();
+    </script>
+  </body>
+</html>

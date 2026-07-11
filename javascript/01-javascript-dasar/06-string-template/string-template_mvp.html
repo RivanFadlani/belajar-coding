@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>String Template</title>
+</head>
+
+<body>
+  <script>
+    const fullName = "Rivan Fadlani";
+    document.writeln("<p>" + "Nama Lengkap: " + fullName + "</p>"); // Cara Lama
+    document.writeln(`<p> Nama Lengkap: ${fullName} </p>`); // Menggunakan String Template
+
+    const template = `Nama Lengkap: ${fullName}`; // Menggunakan String Template
+    console.info(template);
+
+    // penerapan lain
+    const firstName = "Rivan";
+    const lastName = "Fadlani";
+
+    const myName = `My name is ${firstName} ${lastName}!`;
+    console.info(myName);
+
+    // Expression di string template
+    const nama = "Rivan Fadlani";
+    const nilaiSaya = 80;
+    const kkm = 75;
+
+    console.info(`Nama saya ${nama}, apakah saya lulus? ${nilaiSaya > kkm}`); // Expression = ${nilaiSaya > kkm}
+
+    // multiline
+    const multiline = `Nama saya Rivan
+    saya jobless, tapi sekarang lagi belajar coding
+    kalo ga ngoding biasanya main game.`;
+
+    document.writeln("<pre>");
+    document.writeln(multiline);
+    document.writeln("</pre>");
+  </script>
+</body>
+
+</html>

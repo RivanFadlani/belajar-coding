@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anonymous Function</title>
+</head>
+
+<body>
+  <script>
+
+    // disimpan di dalam variable
+    const helloWorld = function (name) { // variable bukanlah nama dari function, dia tetap menjadi variable, dan function tetap menjadi anonymous
+      document.writeln(`<p>Hi, ${name}</p>`);
+    }
+
+    helloWorld("ripunn");
+    helloWorld("rivan");
+
+    // disimpan di dalam function (argument)
+    function myEldenLord(callback) { // parameter 'callback' akan diisi dengan anonymous function dengan parameter 'king'
+      callback("ripunn"); // function 'callback' akan diisi dengan anonymous function yang statementnya berisi mencetak parameter 'king'
+    }
+
+    myEldenLord(function (king) {
+      document.writeln(`<p>My Elden Lord is ${king}</p>`); // anonymous di dalam argument
+    });
+
+    myEldenLord(function (king) {
+      document.writeln(`<p>My Elden Lord is ${king}</p>`); // anonymous di dalam argument
+    });
+
+  </script>
+</body>
+
+</html>

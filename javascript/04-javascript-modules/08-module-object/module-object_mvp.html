@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Module Object</title>
+  </head>
+  <body>
+    <script type="module">
+      // Mengimpor seluruh isi module sebagai sebuah objek (Module Object / Namespace)
+      import * as ripunn from "./scripts/module.js";
+
+      console.info(ripunn.firstName);
+      console.info(ripunn.lastName);
+
+      ripunn.hello("ripunn");
+
+      const person = new ripunn.Person("Rivan");
+      console.info(person.name);
+    </script>
+  </body>
+</html>

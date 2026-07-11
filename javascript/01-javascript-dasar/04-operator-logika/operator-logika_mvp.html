@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Operator Logika</title>
+</head>
+
+<body>
+  <script>
+
+    // Operator Logika
+
+    // &&
+    document.writeln("<p>" + "&&" + "</p>");
+    // ===
+
+    let result = true && true; // true
+    document.writeln("<p>true && true = " + result + "</p>");
+
+    result = true && false; // false
+    document.writeln("<p>true && false = " + result + "</p>");
+
+    result = false && true; // false
+    document.writeln("<p>false && true = " + result + "</p>");
+
+    result = false && false; // false
+    document.writeln("<p> false && false = " + result + "</p>");
+
+    // ||
+    document.writeln("<p>" + "||" + "</p>");
+    // ===
+
+    result = true || true; // true
+    document.writeln("<p> true || true = " + result + "</p>");
+
+    result = true || false; // true
+    document.writeln("<p> true || false = " + result + "</p>");
+
+    result = false || true; // true
+    document.writeln("<p> false || true = " + result + "</p>");
+
+    result = false || false; // false
+    document.writeln("<p> false || false = " + result + "</p>");
+
+    // ! (ternary) kebalikan
+    document.writeln("<p>" + "! (ternary)" + "</p>");
+    // ===
+
+    akuBenar = true // false, true -> false
+    document.writeln("<p> !true = " + !akuBenar + "</p>");
+
+    akuSalah = false // true, false -> true
+    document.writeln("<p> !false = " + !akuSalah + "</p>");
+
+  </script>
+</body>
+
+</html>

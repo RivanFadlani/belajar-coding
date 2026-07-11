@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // dalam membuat method di class, lebih baik menggunakan cara seperti ini
+      class Person {
+        constructor(name) {
+          this.name = name;
+        }
+
+        sayHello(name) {
+          console.info(`Hi, ${name}! my name is ${this.name}`); // muncul di prototype, bukan di instance object
+        }
+      }
+
+      const sapa = new Person("rivan");
+      console.info(sapa);
+      sapa.sayHello("fadlani");
+    </script>
+  </body>
+</html>

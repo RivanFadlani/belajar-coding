@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Operator Logika Non Boolean</title>
+</head>
+
+<body>
+  <script>
+
+    // OR
+    // 1. Membaca dari kiri ke kanan
+    // 2. Akan mengambil nilai pertama yang thruty
+    // 3. Kalau gak ada satupun yang thruty, maka yang terakhir akan diambil
+    console.info("hi" || ""); // thruty: hi
+    console.info("" || []); // thruty: []
+    console.info("0" || "NOL"); // thruty: 0
+    console.info(0 || "NOL"); // thruty: NOL
+    console.info(null || "NULL"); // thruty: NULL
+    console.info(undefined || "UNDEFINED"); // thruty: UNDEFINED
+    console.info(null || undefined); // thruty: undefined, tidak ada nilai yang truthy
+
+    // AND
+    // 1. Membaca dari kiri ke kanan
+    // 2. Akan mengambil nilai pertama yang falsy
+    // 3. Kalau gak ada satupun yang falsy, maka yang terakhir akan diambil
+    console.info("hi" && ""); // falsy: ""
+    console.info("" && []); // falsy: ""
+    console.info("0" && "NOL"); // falsy: NOL
+    console.info(0 && "NOL"); // falsy: 0
+    console.info(null && "NULL"); // falsy: null
+    console.info(undefined && "UNDEFINED"); // falsy: undefined
+    console.info("undefined" && "null"); // falsy: null, karena tidak nilai ada yang falsy
+
+  </script>
+</body>
+
+</html>

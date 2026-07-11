@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Symbol</title>
+  </head>
+  <body>
+    <a
+      href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol"
+      >Link Symbol</a
+    >
+    <script>
+      {
+        // symbol
+        // berfungsi menjamin bahwa properti tersebut selalu unik dan tidak akan pernah bentrok (bertabrakan) dengan properti lain, bahkan jika nama deskripsinya sama.
+
+        // ===
+        const namaDepan = Symbol("ripunn"); // yang di dalam kurung adalah 'deskripsi'
+        const namaBelakang = Symbol("ripunn");
+
+        console.info(namaDepan === namaBelakang); // false, jadi symbol untuk key object akan dianggap unique selalu
+        // ===
+
+        const firstName = Symbol("firstName"); // deskripsinya "firstName"
+        const lastName = Symbol("lastName");
+
+        const person = {};
+        // INI PENTING !!!
+        person[firstName] = "Rivan"; // panggil variable firstName untuk memanggil symbol dengan deskripsi "firstName"
+        // yang di dalam [] bisa disebut dengan 'key'
+        person[lastName] = "Fadlani"; // "Fadlani" adalah value dari property object
+        person[lastName] = "ripunn"; // akan ter-override, karena satu variable hanya memegang satu symbol
+
+        console.info(person);
+
+        // ln. 35: kalau langsung masukan deskripsi symbol yang sama, maka keduanya akan ada di dalam object. kecuali meyimpan symbol di variable atau menggunakan Symbol.for()
+        const orang = {};
+        orang[Symbol("orangSatu")] = "qwerty";
+        orang[Symbol("orangSatu")] = "wasdasd";
+
+        console.info(orang);
+      }
+
+      {
+        // symbol for
+        console.info(Symbol.for("apel") === Symbol.for("apel")); // true
+
+        const buah = {};
+        buah[Symbol.for("buahSatu")] = "Pisang";
+        buah[Symbol.for("buahDua")] = "Semangka";
+
+        console.info(buah);
+        console.info(buah[Symbol.for("buahSatu")]);
+        console.info(buah[Symbol.for("buahDua")]);
+
+        // lanjutan ln. 35 : memassukan string "firstName". maka akan ter-override
+        const fruit = {};
+        fruit[Symbol.for("fruitOne")] = "apple";
+        fruit[Symbol.for("fruitOne")] = "banana";
+
+        console.info(fruit);
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Break</title>
+</head>
+
+<body>
+  <script>
+
+    for (let looping = 1; looping <= 10; looping++) { // perulangan akan berhenti di perulangan ke-10
+      if (looping === 6) { // tapi, karena ada if statement yang kondisi jika sama dengan 6 dan diikuti break. maka kode akan diberhentikan TOTAL
+        document.writeln(`<p>Berhenti! looping ke-${looping} sukses</p>`);
+        break; // kode ini yang menghentikan perulangan, jika sudah mencapai perulangan ke-6
+      }
+      document.writeln(`<p>looping ke-${looping}</p>`);
+    }
+
+  </script>
+</body>
+
+</html>
